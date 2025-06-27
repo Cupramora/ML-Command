@@ -1,5 +1,8 @@
 # sight.py
 
+import vision_bootstrap
+vision_bootstrap.ensure_packages()
+
 import cv2
 from ultralytics import YOLO
 
