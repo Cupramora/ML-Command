@@ -1,0 +1,16 @@
+{
+  "module": "ML-FlightControl",
+  "provides": {
+    "motor_output_format": "JSON {motor_1: float, motor_2: float, ...}",
+    "state_feedback": "attitude, altitude, motor thrust"
+  },
+  "requires": {
+    "sensor_input": "attitude (pitch/roll/yaw), altitude, gps",
+    "target_command": "desired attitude and altitude"
+  },
+  "interfaces": {
+    "output_bridge": "MotorBridge",
+    "input_sensors": "SensorBridge",
+    "command_source": "CommandListener"
+  }
+}
