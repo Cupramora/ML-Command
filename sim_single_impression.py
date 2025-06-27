@@ -6,6 +6,8 @@ vision_bootstrap.ensure_packages()
 
 from sight import detect_from_file
 import json
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
 
 def run_simulated_impression(image_path, known_labels):
     results = detect_from_file(image_path)
