@@ -30,4 +30,4 @@ def run_simulated_impression(image_path, known_labels):
     print(json.dumps(capsule, indent=2))
 
 if __name__ == "__main__":
-    run_simulated_impression("cupramora/chair_frame.png", known_labels=["person", "wall"])
+    run_simulated_impression("ML-Command/chair_frame.png", known_labels=["person", "wall"])
