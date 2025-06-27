@@ -1,7 +1,10 @@
 # sim_single_impression.py
 # Simulates a single frame input for SensorHub testing
 
-from sight import detect_from_file  # we'll make this helper
+import vision_bootstrap
+vision_bootstrap.ensure_packages()
+
+from sight import detect_from_file
 import json
 
 def run_simulated_impression(image_path, known_labels):
@@ -23,7 +26,6 @@ def run_simulated_impression(image_path, known_labels):
     }
 
     print(json.dumps(capsule, indent=2))
-
 
 if __name__ == "__main__":
     run_simulated_impression("cupramora/chair_frame.png", known_labels=["person", "wall"])
