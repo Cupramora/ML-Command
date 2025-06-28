@@ -55,7 +55,7 @@ def zip_payload(files, output):
 
 # === MAIN PROCESS ===
 if __name__ == '__main__':
-    print("🧠 Scanning project for Copilot sync...")
+    print(" Scanning project for Copilot sync...")
     index = walk_and_index(PROJECT_ROOT)
     write_summary(index, SUMMARY_FILE)
     files = list(index.keys()) + [SUMMARY_FILE]

@@ -1,0 +1,437 @@
+{
+  "./ack_router.py": {
+    "lines": 35,
+    "preview": "# ack_router.py\n\nimport uuid, time\n\nclass AckRouter:\n    def __init__(self):\n        self.active_transmissions = {}\n\n    def issue_command_id(self, command):\n        command_id = str(uuid.uuid4())\n        command[\"id\"] = command_id\n        self.active_transmissions[command_id] = {\n            \"times",
+    "mnemonic": "# ack_router.py"
+  },
+  "./action_logger.py": {
+    "lines": 33,
+    "preview": "# action_logger.py\n\nimport time\n\nclass ActionLogger:\n    def __init__(self, stm, ltm):\n        self.stm = stm\n        self.ltm = ltm\n\n    def log_attempt(self, action_name, parameters, result, emotion_vector=None, reinforcement=0.0):\n        capsule = self._build_capsule(action_name, parameters, res",
+    "mnemonic": "# action_logger.py"
+  },
+  "./aesthetic_resonance.py": {
+    "lines": 37,
+    "preview": "# aesthetic_resonance.py\n\nclass AestheticResonance:\n    def __init__(self, mood_engine):\n        self.mood_engine = mood_engine\n\n    def get_style_profile(self):\n        mood = self.mood_engine.get_dominant_mood()\n\n        style_map = {\n            \"curiosity\": {\n                \"tone\": \"inquisitive",
+    "mnemonic": "# aesthetic_resonance.py"
+  },
+  "./behavioral_cognition.py": {
+    "lines": 83,
+    "preview": "# behavior_cognition.py\n\nfrom behavior_pid import BehaviorPID\nfrom emotional_state import EmotionalState\nfrom command_responses import command_responses\nfrom reinforcement_logger import ReinforcementLogger\n\n\nclass BehaviorInterpreter:\n    def __init__(self):\n        self.pid_filter = BehaviorPID(\n  ",
+    "mnemonic": "# behavior_cognition.py"
+  },
+  "./behavior_pid.py": {
+    "lines": 51,
+    "preview": "# behavior_pid.py\n\nfrom collections import deque\n\nclass BehaviorPID:\n    def __init__(self, behavior_types, window=10):\n        self.behavior_types = behavior_types  # e.g. [\"playful\", \"snarky\", \"guarded\", \"supportive\"]\n        self.error_log = deque(maxlen=window)\n        self.last_emotion = None\n\n",
+    "mnemonic": "# behavior_pid.py"
+  },
+  "./bridge_initializer.py": {
+    "lines": 46,
+    "preview": "# bridge_initializer.py\n# Initializes predictive tools, signal bridges, and inter-module contracts\n\nimport json\nfrom shared.math.predictive_kinematics import KinematicPlanner\nfrom shared.math.vector_field_tools import VectorSynthesizer\nfrom shared.interfaces.target_posture_builder import PostureBrid",
+    "mnemonic": "# bridge_initializer.py"
+  },
+  "./capsule_flagger.py": {
+    "lines": 36,
+    "preview": "# capsule_flagger.py\n\ndef flag_capsule(capsule, personality_profile=None):\n    flags = {}\n\n    # Emotional spike detection\n    max_emotion = max(capsule.emotion_vector.values())\n    flags[\"emotional_spike\"] = max_emotion >= 0.75\n\n    # Promotion logic\n    flags[\"promotable\"] = (\n        max_emotion ",
+    "mnemonic": "# capsule_flagger.py"
+  },
+  "./check.py": {
+    "lines": 1,
+    "preview": "y\n",
+    "mnemonic": ""
+  },
+  "./choice.py": {
+    "lines": 58,
+    "preview": "# choice.py\n\nclass BehaviorSelector:\n    def __init__(self):\n        self.behavior_map = {\n            \"retreat_now\": self.act_retreat,\n            \"pause_and_scan\": self.act_scan,\n            \"observe\": self.act_observe,\n            \"monitor\": self.act_monitor\n        }\n\n    def commit_to_action(se",
+    "mnemonic": "# choice.py"
+  },
+  "./choice_engine.py": {
+    "lines": 35,
+    "preview": "# choice_engine.py\n\nclass ChoiceEngine:\n    def __init__(self, mood_engine, goal_stack, spark_engine):\n        self.mood = mood_engine\n        self.goals = goal_stack\n        self.spark = spark_engine\n\n    def decide(self):\n        # 1. Check for active goal\n        current_goal = self.goals.peek()\n",
+    "mnemonic": "# choice_engine.py"
+  },
+  "./choice_test.py": {
+    "lines": 52,
+    "preview": "# choice_test.py\n\nfrom behavioral_cognition import BehaviorInterpreter\nfrom choice import BehaviorSelector\n\n# 1. Symbolic impression of the scene\nscene_description = {\n    \"location\": \"white sand beach\",\n    \"time\": \"night\",\n    \"sky\": \"clear, full of stars\",\n    \"soundscape\": \"gentle waves\",\n    \"t",
+    "mnemonic": "# choice_test.py"
+  },
+  "./cleanup_duplicates.py": {
+    "lines": 22,
+    "preview": "# cleanup_duplicates.py\nimport os\nfrom collections import defaultdict\n\nBASE_DIR = \"path/to/your/repo\"  # <- update this\nDUPLICATES_LOG = \"duplicates_found.txt\"\n\nfile_index = defaultdict(list)\n\nfor root, _, files in os.walk(BASE_DIR):\n    for f in files:\n        if f.endswith(\".py\"):\n            file",
+    "mnemonic": "# cleanup_duplicates.py"
+  },
+  "./cognition.py": {
+    "lines": 39,
+    "preview": "class CognitionCore:\n    def __init__(self, logic_lobe, emotion_lobe):\n        self.logic = logic_lobe\n        self.emotion = emotion_lobe\n\n    def process_impression(self, impression, environment={}):\n        logic_result = self.logic.predict_outcome(impression)\n        emotion_result = self.emotio",
+    "mnemonic": ""
+  },
+  "./command_display.py": {
+    "lines": 39,
+    "preview": "# command_display.py\n\nimport os\nimport json\nimport time\n\nLOG_FILE = \"categorization_log.jsonl\"\n\ndef log_categorization(concept, image_path, confidence, flags=None, source=\"observer_loop\", user_corrected=False):\n    entry = {\n        \"timestamp\": time.strftime(\"%Y-%m-%d %H:%M:%S\"),\n        \"concept\":",
+    "mnemonic": "# command_display.py"
+  },
+  "./command_responses.py": {
+    "lines": 39,
+    "preview": "# command_responses.py\n\ncommand_responses = {\n    \"joy\": [\n        \"blink softly\",         # tier 0\n        \"coo\",                  # tier 1\n        \"smile\",                # tier 2\n        \"wiggle\",               # tier 3\n        \"squeal and bounce\"     # tier 4\n    ],\n    \"anger\": [\n        \"look ",
+    "mnemonic": "# command_responses.py"
+  },
+  "./contract_review.py": {
+    "lines": 43,
+    "preview": "# contract_review.py\n\nimport json\nfrom datetime import datetime\n\nclass ContractReview:\n    def __init__(self, log_file=\"contracts.json\"):\n        self.log_file = log_file\n        self.contracts = []\n        self.load()\n\n    def log_contract(self, upgrade, cost, outcome, notes=\"\"):\n        entry = {\n",
+    "mnemonic": "# contract_review.py"
+  },
+  "./copilot_sync.py": {
+    "lines": 63,
+    "preview": "# === copilot_sync.py ===\n# Author: Dane & Copilot\n# Purpose: Extract code context and create a portable memory bundle for AI initialization.\n# Usage: Run this script from your project root to generate a structured `.zip` of relevant files,\n#         plus a contextual summary for easy reinjection in",
+    "mnemonic": "# === copilot_sync.py ==="
+  },
+  "./core_loop.py": {
+    "lines": 157,
+    "preview": "# core_loop.py\n\nimport threading\nimport time\n\n# Core processing modules\nfrom perception import process_capsule\nfrom state_manager import StateManager\nfrom short_term import ShortTermMemory\nfrom long_term import LongTermMemory\nfrom reinforcement_logger import ReinforcementLogger\nfrom behavioral_cogni",
+    "mnemonic": "# core_loop.py"
+  },
+  "./credit_inflation.py": {
+    "lines": 23,
+    "preview": "# credit_inflation.py\n\nclass CreditInflation:\n    def __init__(self, base_rate=0.02):\n        self.base_rate = base_rate\n        self.history = []\n\n    def adjust_cost(self, base_cost, performance_score, credit_velocity):\n        inflation = self.base_rate + (credit_velocity * 0.05) - (performance_s",
+    "mnemonic": "# credit_inflation.py"
+  },
+  "./currency.py": {
+    "lines": 87,
+    "preview": "# currency.py\n\nimport json\nimport os\nfrom datetime import datetime\n\n# Optional: uncomment if you're using review/inflation directly here\n# from contract_review import ContractReview\n# from credit_inflation import CreditInflation\n\nclass Upgrade:\n    def __init__(self, name, credit_cost, description, ",
+    "mnemonic": "# currency.py"
+  },
+  "./currier.py": {
+    "lines": 34,
+    "preview": "# currier.py\n\nfrom gatekeeper import decrypt_payload\nfrom golgi_handler import handle_capsule\nimport socket\n\nHOST = '0.0.0.0'\nPORT = 5151  # Currier listens here\u2014separate from the command port\n\ndef run_currier():\n    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:\n        s.bind((HOST, ",
+    "mnemonic": "# currier.py"
+  },
+  "./desire_engine.py": {
+    "lines": 51,
+    "preview": "# desire_engine.py\n\nimport random\nimport math\n\nclass Desire:\n    def __init__(self, name, target_level, kp=0.6, ki=0.1, kd=0.05):\n        self.name = name\n        self.target = target_level\n        self.current = 0\n        self.integral = 0\n        self.last_error = 0\n        self.kp, self.ki, self.",
+    "mnemonic": "# desire_engine.py"
+  },
+  "./detection_loop.py": {
+    "lines": 64,
+    "preview": "import os\nimport cv2\nimport time\nimport csv\n\n# Output directory for labels\nlabel_dir = \"labels\"\nos.makedirs(label_dir, exist_ok=True)\n\nframe_count = 0\n\nwhile True:\n    ret, frame = cap.read()\n    if not ret:\n        print(\" Couldn't read from the camera.\")\n        break\n\n    results = model(frame)[0",
+    "mnemonic": ""
+  },
+  "./dispatcher.py": {
+    "lines": 46,
+    "preview": "from gatekeeper import decrypt_payload, encrypt_payload\nfrom golgi_handler import handle_capsule\nfrom ack_router import AckRouter\n\nimport socket\n\nack_router = AckRouter()\n\nDRONE_IP = '192.168.1.42'  # Replace with actual IP\nPORT = 5050\n\n# 1. Prepare command and issue unique ID\ncommand = {\n    \"type\"",
+    "mnemonic": ""
+  },
+  "./dream_reflections.py": {
+    "lines": 44,
+    "preview": "# dream_reflections.py\n\nimport time\nimport json\nimport os\n\nclass DreamReflections:\n    def __init__(self, log_path=\"dream_reflections.json\"):\n        self.log_path = log_path\n        self.reflections = []\n        self._load()\n\n    def _load(self):\n        if os.path.exists(self.log_path):\n          ",
+    "mnemonic": "# dream_reflections.py"
+  },
+  "./dream_state.py": {
+    "lines": 45,
+    "preview": "# dream_state.py\n\nimport random\nimport time\nfrom dream_reflections import DreamReflections\n\nclass DreamState:\n    def __init__(self, short_term_memory, long_term_memory):\n        self.stm = short_term_memory\n        self.ltm = long_term_memory\n        self.reflections = DreamReflections()\n\n    def p",
+    "mnemonic": "# dream_state.py"
+  },
+  "./dream_timer.py": {
+    "lines": 26,
+    "preview": "# dream_timer.py\n\nimport time\nimport random\n\nclass DreamTimer:\n    def __init__(self):\n        self.last_dream_time = time.time()\n        self.base_interval = random.randint(259200, 345600)  # 3\u20134 days in seconds\n        self.override_flag = False\n\n    def should_dream(self, emotional_backlog=False)",
+    "mnemonic": "# dream_timer.py"
+  },
+  "./ear.py": {
+    "lines": 7,
+    "preview": "from sound import listen\n\ndef process_audio(threshold=0.2):\n    data = listen()\n    if data[\"volume\"] > threshold:\n        return {\"event\": \"loud_noise\", \"intensity\": data[\"volume\"]}\n    return {\"event\": \"ambient\", \"intensity\": data[\"volume\"]}",
+    "mnemonic": ""
+  },
+  "./emotion.py": {
+    "lines": 75,
+    "preview": "# emotion.py\n\nimport time\nimport math\n\nclass Emotion:\n    def __init__(self, name, baseline, sensitivity, decay_rate):\n        self.name = name\n        self.baseline = baseline\n        self.sensitivity = sensitivity\n        self.decay_rate = decay_rate\n        self.value = baseline\n        self.last",
+    "mnemonic": "# emotion.py"
+  },
+  "./emotional_state.py": {
+    "lines": 30,
+    "preview": "# emotional_state.py\n\nclass EmotionalState:\n    def __init__(self):\n        self.emotions = {\n            \"joy\": 0.0,\n            \"anger\": 0.0,\n            \"fear\": 0.0,\n            \"sadness\": 0.0,\n            \"curiosity\": 0.0\n        }\n\n    def update_emotion(self, emotion, value):\n        self.emot",
+    "mnemonic": "# emotional_state.py"
+  },
+  "./emotion_loop.py": {
+    "lines": 35,
+    "preview": "# emotion_loop.py\n\nimport time\nfrom emotion import emotions, get_emotion_vector, normalize_emotions\n\nclass EmotionLoop:\n    def __init__(self):\n        self.last_tick = time.time()\n        self.state = normalize_emotions(get_emotion_vector())\n\n    def tick(self):\n        now = time.time()\n        el",
+    "mnemonic": "# emotion_loop.py"
+  },
+  "./emotion_test.py": {
+    "lines": 46,
+    "preview": "# emotion_test.py\n\nfrom logic import LogicalLobe\nfrom emotion import EmotionalLobe\n\n# Example observation: Volcano with eruption cues\nobservation = {\n    \"shape\": \"cone\",\n    \"smoke\": True,\n    \"temperature\": \"high\"\n}\n\n# Initialize lobes\nlogic = LogicalLobe()\nemotion = EmotionalLobe()\n\n# Train logic",
+    "mnemonic": "# emotion_test.py"
+  },
+  "./energy_state.py": {
+    "lines": 22,
+    "preview": "# energy_state.py\n\nclass EnergyState:\n    def __init__(self):\n        self.energy = 1.0  # range: 0.0 (exhausted) to 1.0 (fully charged)\n\n    def drain(self, amount):\n        self.energy = max(0.0, self.energy - amount)\n\n    def recharge(self, amount):\n        self.energy = min(1.0, self.energy + am",
+    "mnemonic": "# energy_state.py"
+  },
+  "./expansion_tracker.py": {
+    "lines": 21,
+    "preview": "# expansion_tracker.py\n\nimport time\nimport json\n\nEXPANSION_LOG = \"expansion_log.jsonl\"\n\ndef suggest_expansion(reason: str, suggestion: str, severity: str = \"moderate\"):\n    entry = {\n        \"timestamp\": time.strftime(\"%Y-%m-%d %H:%M:%S\"),\n        \"suggestion\": suggestion,\n        \"reason\": reason,\n",
+    "mnemonic": "# expansion_tracker.py"
+  },
+  "./eye.py": {
+    "lines": 22,
+    "preview": "# eye.py\n\nfrom sight import capture_and_detect, detect_from_file\n\ndef process_vision(known_labels, simulate=False, sim_path=None):\n    if simulate and sim_path:\n        print(f\"[SIM] Running simulated perception on: {sim_path}\")\n        results = detect_from_file(sim_path)\n    else:\n        results ",
+    "mnemonic": "# eye.py"
+  },
+  "./function_mapper.py": {
+    "lines": 59,
+    "preview": "# function_mapper.py\n\nfrom function_registry import FunctionRegistry\n\nclass FunctionMapper:\n    def __init__(self, capability_registry, action_logger):\n        self.capabilities = capability_registry\n        self.logger = action_logger\n        self.registry = FunctionRegistry()\n        self._bootstr",
+    "mnemonic": "# function_mapper.py"
+  },
+  "./function_registry.py": {
+    "lines": 41,
+    "preview": "# function_registry.py\n\nclass FunctionRegistry:\n    def __init__(self):\n        self.functions = {}\n\n    def register(self, name, preconditions, effects, tags=None):\n        self.functions[name] = {\n            \"preconditions\": preconditions,\n            \"effects\": effects,\n            \"tags\": tags ",
+    "mnemonic": "# function_registry.py"
+  },
+  "./gatekeeper.py": {
+    "lines": 28,
+    "preview": "# gatekeeper.py\n\nfrom Crypto.Cipher import AES\nfrom Crypto.Random import get_random_bytes\nimport base64\nimport json\n\n# Must be 32 bytes (256 bits)\nSECRET_KEY = b\"your-32-byte-secret-key-here!!\"  # Make this identical on both nodes\n\ndef encrypt_payload(data: dict) -> str:\n    raw = json.dumps(data).e",
+    "mnemonic": "# gatekeeper.py"
+  },
+  "./goal_stack.py": {
+    "lines": 47,
+    "preview": "# goal_stack.py\n\nclass Goal:\n    def __init__(self, description, subgoals=None, completed=False):\n        self.description = description\n        self.subgoals = subgoals or []\n        self.completed = completed\n\n    def is_atomic(self):\n        return len(self.subgoals) == 0\n\n    def __repr__(self):",
+    "mnemonic": "# goal_stack.py"
+  },
+  "./golgi_handler.py": {
+    "lines": 36,
+    "preview": "# golgi_handler.py\n\nfrom perception import PerceptionCapsule, process_capsule\nfrom short_term import ShortTermMemory\n\nstm = ShortTermMemory()  # or inject it later\n\ndef handle_capsule(raw_capsule: dict):\n    try:\n        capsule = PerceptionCapsule(**raw_capsule)\n\n        # Optional prefiltering\n   ",
+    "mnemonic": "# golgi_handler.py"
+  },
+  "./gps_logger.py": {
+    "lines": 30,
+    "preview": "# gps_logger.py\n\nimport time\nimport json\nfrom gps import gps, WATCH_ENABLE  # Assumes gpsd is running\nimport os\n\nLOG_FILE = \"gps_log.jsonl\"\n\ndef log_location():\n    session = gps(mode=WATCH_ENABLE)\n    while True:\n        try:\n            report = session.next()\n            if report.get(\"class\") ==",
+    "mnemonic": "# gps_logger.py"
+  },
+  "./growth_manager.py": {
+    "lines": 45,
+    "preview": "# growth_manager.py\n\nimport time\nfrom expansion_tracker import suggest_expansion\n\ndef evaluate_skill_blockage(skill: str, target: float, actual: float):\n    if actual < target - 0.4:\n        reason = f\"Unable to perform '{skill}' with existing capabilities.\"\n        suggestion = f\"Upgrade or supplem",
+    "mnemonic": "# growth_manager.py"
+  },
+  "./handler.py": {
+    "lines": 36,
+    "preview": "# handler.py\n\nfrom sight import scan_area\nfrom panic import trigger_panic\nfrom speak import say\n\ndef handle_command(cmd):\n    task = cmd.get(\"task\", \"\").lower()\n\n    # Vision task\n    if task == \"scan_area\":\n        return scan_area(cmd)\n\n    # Voice task\n    elif task == \"say\":\n        text = cmd.g",
+    "mnemonic": "# handler.py"
+  },
+  "./identity.py": {
+    "lines": 21,
+    "preview": "# identity.py\n\nclass Identity:\n    def __init__(self, identity_keys):\n        # Long-term belief values (e.g. \"Im logical\", \"I value independence\")\n        self.core_values = {k: 0.5 for k in identity_keys}\n        self.value_history = []\n\n    def update_from_personality(self, personality_vector, le",
+    "mnemonic": "# identity.py"
+  },
+  "./identity_loop.py": {
+    "lines": 22,
+    "preview": "# identity_loop.py\n\nimport time\nfrom identity import Identity\nfrom personality_pid import PersonalityPID  # already exists in your system\n\nclass IdentityLoop:\n    def __init__(self, identity_keys):\n        self.identity = Identity(identity_keys)\n        self.last_update_time = None\n\n    def tick(sel",
+    "mnemonic": "# identity_loop.py"
+  },
+  "./impulse_controller.py": {
+    "lines": 15,
+    "preview": "class ImpulseRegulator:\n    def __init__(self):\n        self.impulse_score = 0.5\n        self.wisdom_score = 0.1  # Grows over time\n\n    def update_from_experience(self, reward):\n        if reward > 0:\n            self.wisdom_score = min(1.0, self.wisdom_score + 0.01)\n        else:\n            self.",
+    "mnemonic": ""
+  },
+  "./karma.py": {
+    "lines": 35,
+    "preview": "# karma.py\n\nclass KarmaEngine:\n    def __init__(self):\n        self.karma_score = 0.0  # range: -1.0 to +1.0\n        self.history = []\n\n    def log_deed(self, deed_type, intent, outcome=None):\n        base_reward = self._base_reward(deed_type, intent)\n        echo_bonus = self._echo_bonus(outcome)\n\n",
+    "mnemonic": "# karma.py"
+  },
+  "./knowledge.py": {
+    "lines": 70,
+    "preview": "# knowledge.py\n\nimport os\nimport json\nimport time\nfrom command_display import log_categorization, log_correction\n\nENCYCLOPEDIA_ROOT = \"encyclopedia\"\n\ndef store_visual_concept(concept: str, capsule_data: dict, is_new: bool = False):\n    base_dir = os.path.join(\n        ENCYCLOPEDIA_ROOT,\n        conc",
+    "mnemonic": "# knowledge.py"
+  },
+  "./listener.py": {
+    "lines": 42,
+    "preview": "# listener.py (on drone)\n\nfrom gatekeeper import decrypt_payload, encrypt_payload\nimport socket\n\nHOST = '0.0.0.0'\nPORT = 5050\n\ndef handle_command(cmd):\n    if cmd[\"task\"] == \"scan_area\":\n        from sight import capture_and_detect\n        results = capture_and_detect()\n        return {\n            ",
+    "mnemonic": "# listener.py (on drone)"
+  },
+  "./logic.py": {
+    "lines": 50,
+    "preview": "# logic.py\n\nfrom collections import defaultdict\nimport datetime\nimport uuid\n\nclass LogicalLobe:\n    def __init__(self):\n        self.observation_log = []         # Raw incoming observations\n        self.event_stats = defaultdict(lambda: {\"count\": 0, \"outcomes\": defaultdict(int)})\n        self.patter",
+    "mnemonic": "# logic.py"
+  },
+  "./logic_loop.py": {
+    "lines": 34,
+    "preview": "# logic_loop.py\n\nimport time\n\nclass LogicLoop:\n    def __init__(self, setpoint=1.0, kp=1.0, ki=0.0, kd=0.0):\n        self.setpoint = setpoint  # Desired outcome (e.g. \"detect eruption\")\n        self.kp = kp              # Proportional gain\n        self.ki = ki              # Integral gain\n        se",
+    "mnemonic": "# logic_loop.py"
+  },
+  "./logic_test.py": {
+    "lines": 22,
+    "preview": "from logic import LogicalLobe\n\nlogic = LogicalLobe()\n\n# Simulate observations\nlogic.observe(\n    description=\"Mountain with smoke + high temp\",\n    features={\"shape\": \"cone\", \"smoke\": True, \"temp\": \"high\"},\n    outcome=\"eruption\"\n)\n\nlogic.observe(\n    description=\"Mountain with no smoke\",\n    featur",
+    "mnemonic": ""
+  },
+  "./long_term.py": {
+    "lines": 53,
+    "preview": "# long_term.py\n\nimport time\nimport math\n\nclass LongTermMemory:\n    def __init__(self):\n        self.entries = []  # List of long-term memory entries\n\n    def _log_decay(self, significance, age):\n        # Logarithmic decay: slower fade for high-sig memories\n        return round(significance / math.l",
+    "mnemonic": "# long_term.py"
+  },
+  "./manual_cleanup_duplicates.py": {
+    "lines": 61,
+    "preview": "import os\nimport time\nfrom collections import defaultdict\n\n# === CONFIGURATION ===\nDELETE_MODE = True               # Set to False for dry run\nPREFERRED_KEEP_PATH = \"ML-Command\"  # Folder to prioritize when duplicates found\nEXTENSIONS = [\".py\"]             # File types to scan\nCLEAN_EMPTY_DIRS = Tru",
+    "mnemonic": ""
+  },
+  "./module_interface.json": {
+    "lines": 16,
+    "preview": "{\n  \"module\": \"ML-FlightControl\",\n  \"provides\": {\n    \"motor_output_format\": \"JSON {motor_1: float, motor_2: float, ...}\",\n    \"state_feedback\": \"attitude, altitude, motor thrust\"\n  },\n  \"requires\": {\n    \"sensor_input\": \"attitude (pitch/roll/yaw), altitude, gps\",\n    \"target_command\": \"desired atti",
+    "mnemonic": ""
+  },
+  "./module_interface.loader.py": {
+    "lines": 41,
+    "preview": "# module_interface_loader.py\n# loads and parses module_interface.json files across repos\n\nimport json\nimport os\n\nclass ModuleInterfaceLoader:\n    \"\"\"\n    Loads interface contracts from other modules for system validation and wiring.\n    \"\"\"\n\n    def __init__(self, paths):\n        self.paths = paths\n",
+    "mnemonic": "# module_interface_loader.py"
+  },
+  "./module_interface_loader.py": {
+    "lines": 41,
+    "preview": "# module_interface_loader.py\n# loads and parses module_interface.json files across repos\n\nimport json\nimport os\n\nclass ModuleInterfaceLoader:\n    \"\"\"\n    Loads interface contracts from other modules for system validation and wiring.\n    \"\"\"\n\n    def __init__(self, paths):\n        self.paths = paths\n",
+    "mnemonic": "# module_interface_loader.py"
+  },
+  "./mood.py": {
+    "lines": 65,
+    "preview": "# mood.py\n\nimport time\nfrom collections import deque\n\nclass Mood:\n    def __init__(self, emotion_keys, window_seconds=86400):  # default: 24 hours\n        self.current_mood = {k: 0.2 for k in emotion_keys}  # Neutral start\n        self.history = deque()  # List of (timestamp, emotion_vector)\n       ",
+    "mnemonic": "# mood.py"
+  },
+  "./mood_drift.py": {
+    "lines": 32,
+    "preview": "# mood_drift.py\n\nimport time\nimport random\n\nclass MoodDrift:\n    def __init__(self):\n        self.mood_vector = {\n            \"curiosity\": 0.3,\n            \"melancholy\": 0.1,\n            \"trust\": 0.4,\n            \"anxiety\": 0.2\n        }\n        self.last_update = time.time()\n\n    def update_from_ca",
+    "mnemonic": "# mood_drift.py"
+  },
+  "./mood_loop.py": {
+    "lines": 32,
+    "preview": "# mood_loop.py\n\nimport time\nfrom mood import Mood\nfrom emotion_loop import EmotionLoop  # Assumes you have this built\n\nclass MoodLoop:\n    def __init__(self, emotion_keys):\n        self.emotion_loop = EmotionLoop(emotion_keys)\n        self.mood = Mood(emotion_keys)\n        self.last_day_timestamp = ",
+    "mnemonic": "# mood_loop.py"
+  },
+  "./navigator.py": {
+    "lines": 50,
+    "preview": "# navigator.py\n\nimport os\nimport shutil\nimport json\n\nclass Navigator:\n    def __init__(self, base_path=\"mindspace/\", correction_log=\"categorization_memory.json\"):\n        self.base_path = base_path\n        self.correction_log = correction_log\n        self.memory = self._load_memory()\n\n    def _load_",
+    "mnemonic": "# navigator.py"
+  },
+  "./navigator_loop.py": {
+    "lines": 23,
+    "preview": "# navigator_loop.py\n\nimport time\nfrom psyche_report import PsycheReport\nfrom navigator import Navigator\n\ndef run_navigator_loop(short_term_memory, dream_reflections, reinforcement_log):\n    psyche = PsycheReport(short_term_memory, dream_reflections, reinforcement_log)\n    navigator = Navigator()\n\n  ",
+    "mnemonic": "# navigator_loop.py"
+  },
+  "./negotiation_engine.py": {
+    "lines": 37,
+    "preview": "# negotiation_engine.py\n\nimport random\n\nclass NegotiationEngine:\n    def __init__(self):\n        self.patience = 1.0  # 0.0 = desperate, 1.0 = calm\n        self.trust = 0.5     # 0.0 = skeptical, 1.0 = trusting\n        self.history = []\n\n    def evaluate_offer(self, proposal, current_credits):\n     ",
+    "mnemonic": "# negotiation_engine.py"
+  },
+  "./observer_loop.py": {
+    "lines": 93,
+    "preview": "# observer_loop.py\n\nimport os\nimport cv2\nimport time\nimport csv\nimport json\n\nfrom speak import say\n\n# YOLOv8 model loaded externally and passed in\nfrom ultralytics import YOLO\nmodel = YOLO(\"yolov8n.pt\")\n\ncap = cv2.VideoCapture(0)\nlabel_dir = \"labels\"\nos.makedirs(label_dir, exist_ok=True)\n\nmetadata_p",
+    "mnemonic": "# observer_loop.py"
+  },
+  "./perception.py": {
+    "lines": 106,
+    "preview": "# perception.py\n\nimport time\nfrom capsule_flagger import flag_capsule\nfrom state_manager import StateManager\nfrom expansion_tracker import suggest_expansion\n\ndef process_capsule(capsule):\n    flags = capsule.get(\"flags\", {})\n    summary = capsule.get(\"summary\", \"\").lower()\n\n    if \"missing_visual_co",
+    "mnemonic": "# perception.py"
+  },
+  "./personality.py": {
+    "lines": 30,
+    "preview": "# personality.py\n\nclass Personality:\n    def __init__(self, traits):\n        self.traits = {t: 0.5 for t in traits}  # e.g. {\"curiosity\": 0.5, \"snark\": 0.3}\n        self.trait_history = []\n\n    def adjust_traits(self, mood_snapshot, learning_rate=0.01):\n        \"\"\"\n        Disturbance: a single day'",
+    "mnemonic": "# personality.py"
+  },
+  "./personality_loop.py": {
+    "lines": 23,
+    "preview": "# personality_loop.py\n\nimport time\nfrom personality import Personality\nfrom mood import Mood  # Or import from mood_loop if coupled\n\nclass PersonalityLoop:\n    def __init__(self, trait_keys):\n        self.personality = Personality(trait_keys)\n        self.last_processed = None  # Last timestamp of a",
+    "mnemonic": "# personality_loop.py"
+  },
+  "./ponder.py": {
+    "lines": 24,
+    "preview": "# ponder.py\n\nimport random\nimport time\nfrom dream_reflections import DreamReflections\n\nclass PonderingBehavior:\n    def __init__(self):\n        self.reflections = DreamReflections()\n        self.last_ponder_time = 0\n\n    def maybe_ponder(self, idle=True):\n        now = time.time()\n        if not idl",
+    "mnemonic": "# ponder.py"
+  },
+  "./psyche_report.py": {
+    "lines": 64,
+    "preview": "# psyche_report.py\n\nimport time\nfrom collections import Counter\n\nclass PsycheReport:\n    def __init__(self, short_term_memory, dream_reflections, reinforcement_log):\n        self.stm = short_term_memory\n        self.reflections = dream_reflections\n        self.reinforcement = reinforcement_log\n\n    ",
+    "mnemonic": "# psyche_report.py"
+  },
+  "./receiver.py": {
+    "lines": 59,
+    "preview": "from gatekeeper import decrypt_payload, encrypt_payload\nfrom handler import handle_command\nfrom speak import say\n\nimport socket\nimport time\n\n# ASCII-safe voice log\ndef append_to_voice_log(text):\n    timestamp = time.strftime(\"[%H:%M:%S] \", time.localtime())\n    with open(\"voice_output_log.txt\", \"a\",",
+    "mnemonic": ""
+  },
+  "./reinforcement_log.py": {
+    "lines": 33,
+    "preview": "# reinforcement_log.py\n\nimport time\n\nclass ReinforcementLogger:\n    def __init__(self):\n        self.log = []\n        self.behavior_weights = {}  # e.g. {\"tantrum\": -0.2, \"smile\": +0.3}\n\n    def log_feedback(self, emotion, intensity, behavior, context, feedback, reinforcement):\n        entry = {\n   ",
+    "mnemonic": "# reinforcement_log.py"
+  },
+  "./reinforcement_logger.py": {
+    "lines": 41,
+    "preview": "import time\n\nclass ReinforcementLogger:\n    def __init__(self):\n        self.log = []\n        self.behavior_weights = {}      # e.g. {\"tantrum\": -0.2}\n        self.behavior_confidence = {}   # e.g. {\"smile\": 0.6}\n\n    def log_feedback(self, emotion, intensity, behavior, context, feedback, reinforcem",
+    "mnemonic": ""
+  },
+  "./short_term.py": {
+    "lines": 55,
+    "preview": "# short_term.py\n\nimport time\nimport math\n\nclass ShortTermMemory:\n    def __init__(self, max_slots=12):\n        self.slots = []  # List of memory entries\n        self.max_slots = max_slots\n\n    def _calculate_significance(self, capsule):\n        # You can expand this formula with more nuance later\n  ",
+    "mnemonic": "# short_term.py"
+  },
+  "./sight.py": {
+    "lines": 25,
+    "preview": "# sight.py\n\nimport vision_bootstrap\nvision_bootstrap.ensure_packages()\n\nimport cv2\nfrom ultralytics import YOLO\n\nmodel = YOLO(\"yolov8n.pt\")  # preload once for both functions\n\ndef capture_and_detect():\n    cap = cv2.VideoCapture(0)\n    ret, frame = cap.read()\n    cap.release()\n\n    if not ret:\n     ",
+    "mnemonic": "# sight.py"
+  },
+  "./sim_single_impression.py": {
+    "lines": 33,
+    "preview": "# sim_single_impression.py\n# Simulates a single frame input for SensorHub testing\n\nimport vision_bootstrap\nvision_bootstrap.ensure_packages()\n\nfrom sight import detect_from_file\nimport json\nimport sys\nsys.stdout.reconfigure(encoding='utf-8')\n\ndef run_simulated_impression(image_path, known_labels):\n ",
+    "mnemonic": "# sim_single_impression.py"
+  },
+  "./smell.py": {
+    "lines": 1,
+    "preview": "y\n",
+    "mnemonic": ""
+  },
+  "./sound.py": {
+    "lines": 10,
+    "preview": "# sound.py\n\nimport sounddevice as sd\nimport numpy as np\n\ndef listen(duration=2, samplerate=44100):\n    audio = sd.rec(int(duration * samplerate), samplerate=samplerate, channels=1)\n    sd.wait()\n    volume = np.linalg.norm(audio) / len(audio)\n    return {\"volume\": volume}",
+    "mnemonic": "# sound.py"
+  },
+  "./spark_generator.py": {
+    "lines": 30,
+    "preview": "# spark_generator.py\n\nimport random\nimport time\n\nclass SparkGenerator:\n    def __init__(self, mood_engine, memory):\n        self.mood_engine = mood_engine\n        self.memory = memory\n        self.last_spark = 0\n\n    def maybe_spark(self):\n        now = time.time()\n        if now - self.last_spark <",
+    "mnemonic": "# spark_generator.py"
+  },
+  "./speak.py": {
+    "lines": 21,
+    "preview": "# speak.py\n\nimport time\nfrom voice import generate_voice_line  # Core brain generates how to say it\n\nVOICE_LOG = \"voice_output_log.txt\"\n\ndef say(intent: str, context: dict = {}):\n    line = generate_voice_line(intent, context)\n    timestamp = time.strftime(\"[%H:%M:%S] \", time.localtime())\n    full_l",
+    "mnemonic": "# speak.py"
+  },
+  "./state_manager.py": {
+    "lines": 56,
+    "preview": "# state_manager.py\n\nimport time\nfrom dream_timer import DreamTimer\n\nclass StateManager:\n    def __init__(self, short_term_memory, dream_state):\n        self.state = \"idle\"\n        self.last_active = time.time()\n        self.energy = 1.0  # 1.0 = fully alert, 0.0 = deep sleep\n        self.dream_timer",
+    "mnemonic": "# state_manager.py"
+  },
+  "./taste.py": {
+    "lines": 1,
+    "preview": "y\n",
+    "mnemonic": ""
+  },
+  "./test_brain_boot.py": {
+    "lines": 28,
+    "preview": "# test_brain_boot.py\nfrom perception import PerceptionCapsule, process_capsule\n\n# Create the capsule\ncapsule = PerceptionCapsule(\n    stimulus={\"caller\": \"Dane\", \"gesture\": \"high_five\"},\n    emotion_vector={\"joy\": 0.72},\n    behavior=\"come_when_called\",\n    context=\"Dane called her over and gave a h",
+    "mnemonic": "# test_brain_boot.py"
+  },
+  "./touch.py": {
+    "lines": 32,
+    "preview": "# touch.py\n\nimport time\nimport random  # placeholder for real sensor input\n\ndef get_accelerometer_data():\n    # Placeholder: Replace with real sensor polling\n    return {\n        \"x\": random.uniform(-1, 1),\n        \"y\": random.uniform(-1, 1),\n        \"z\": random.uniform(-1, 1)\n    }\n\ndef interpret_m",
+    "mnemonic": "# touch.py"
+  },
+  "./transmitter.py": {
+    "lines": 29,
+    "preview": "# transmitter.py\nimport socket, time\nfrom gatekeeper import encrypt_payload, decrypt_payload\n\nRETRIES = 3\nTIMEOUT = 4  # seconds\n\ndef send_command(command: dict, ip, port):\n    command.setdefault(\"priority\", \"normal\")\n    payload = encrypt_payload(command)\n\n    for attempt in range(RETRIES):\n       ",
+    "mnemonic": "# transmitter.py"
+  },
+  "./vision_bootstrap.py": {
+    "lines": 26,
+    "preview": "# vision_bootstrap.py\n# Ensures OpenCV and Ultralytics YOLO are installed and ready\n\nimport subprocess\nimport sys\n\nrequired = {\n    \"opencv-python\": \"cv2\",\n    \"ultralytics\": \"ultralytics\"\n}\n\ndef install(package):\n    subprocess.check_call([sys.executable, \"-m\", \"pip\", \"install\", package])\n\ndef ensu",
+    "mnemonic": "# vision_bootstrap.py"
+  },
+  "./voice.py": {
+    "lines": 37,
+    "preview": "# voice.py\n\nimport random\n\ndef generate_voice_line(intent: str, context: dict = {}) -> str:\n    # Simple emotional modifiers\n    mood = context.get(\"mood\", \"neutral\")\n    task = context.get(\"task\", \"something\")\n    name = context.get(\"name\", \"Dane\")\n\n    templates = {\n        \"task_received\": {\n    ",
+    "mnemonic": "# voice.py"
+  },
+  "./web_probe.py": {
+    "lines": 63,
+    "preview": "# web_probe.py\n\nimport requests, os, time, json\nfrom bs4 import BeautifulSoup\nfrom PIL import Image\nfrom io import BytesIO\nfrom perception import process_capsule, PerceptionCapsule\n\nHEADERS = {\"User-Agent\": \"Mozilla/5.0\"}\nARCHIVE_DIR = \"encyclopedia\"\nLOG_FILE = \"web_probe_log.jsonl\"\n\nos.makedirs(ARC",
+    "mnemonic": "# web_probe.py"
+  }
+}
