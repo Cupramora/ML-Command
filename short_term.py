@@ -9,8 +9,8 @@ class ShortTermMemory:
         self.max_slots = max_slots
 
     def _calculate_significance(self, capsule):
-        # You can expand this formula with more nuance later
-        emotion_intensity = max(capsule.emotion_vector.values())
+        # Estimate how meaningful this capsule is
+        emotion_intensity = max(capsule.emotion_vector.values()) if capsule.emotion_vector else 0.0
         novelty = capsule.stimulus.get("novelty_score", 0.5)
         clarity = capsule.stimulus.get("clarity", 0.5)
         attention = capsule.stimulus.get("attention", 0.5)
