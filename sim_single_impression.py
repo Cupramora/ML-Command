@@ -43,7 +43,7 @@ def run_simulated_impression(image_path, known_labels):
     # Compose cognitive capsule
     perceptual_capsule = PerceptionCapsule(
         stimulus={"detected": [d["label"] for d in detections]},
-        emotion_vector={"curiosity": 0.2, "awe": 0.1},  # Feel free to tune
+        emotion_vector={"curiosity": 0.2, "awe": 0.15},  # tweak freely
         behavior="observe",
         context=f"Detected: {[d['label'] for d in detections]}",
         feedback="neutral",
@@ -57,5 +57,5 @@ def run_simulated_impression(image_path, known_labels):
 
 if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    image_path = os.path.join(script_dir, "chair_frame.png")
+    image_path = os.path.join(script_dir, "guess1.png")  # Updated filename here
     run_simulated_impression(image_path, known_labels=["person", "wall"])
