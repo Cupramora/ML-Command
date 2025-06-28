@@ -42,3 +42,21 @@ class DreamReflections:
 
     def get_all_ponderables(self):
         return [r for r in self.reflections if r["ponderable"]]
+        from perception import process_capsule, PerceptionCapsule
+
+def reflect_on_recent(self):
+    recent = self.get_recent_reflection()
+    if not recent:
+        return None
+
+    capsule = PerceptionCapsule(
+        stimulus={"source": "internal", "memory_reference": recent["summary"]},
+        emotion_vector={recent["emotion"]: recent["amplified"] * 0.5},
+        behavior="reflect",
+        context=recent["summary"],
+        feedback="internal",
+        reinforcement=0.05
+    )
+    result = process_capsule(capsule)
+    print("💭 Dream Reflection Injected:", result["context"])
+    return result
