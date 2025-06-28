@@ -5,6 +5,7 @@ import vision_bootstrap
 vision_bootstrap.ensure_packages()
 
 from sight import detect_from_file
+from perception import PerceptionCapsule, process_capsule
 import json
 import sys
 import os
@@ -39,7 +40,22 @@ def run_simulated_impression(image_path, known_labels):
 
     print(json.dumps(capsule, indent=2))
 
+    # Compose cognitive capsule
+    perceptual_capsule = PerceptionCapsule(
+        stimulus={"detected": [d["label"] for d in detections]},
+        emotion_vector={"curiosity": 0.2, "awe": 0.15},  # tweak freely
+        behavior="observe",
+        context=f"Detected: {[d['label'] for d in detections]}",
+        feedback="neutral",
+        reinforcement=0.3
+    )
+
+    result = process_capsule(perceptual_capsule)
+
+    print("\n Cognitive Outcome:")
+    print(json.dumps(result, indent=2))
+
 if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    image_path = os.path.join(script_dir, "chair_frame.png")
+    image_path = os.path.join(script_dir, "guess1.png")  # Updated filename here
     run_simulated_impression(image_path, known_labels=["person", "wall"])
