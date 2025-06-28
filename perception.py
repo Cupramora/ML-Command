@@ -1,3 +1,5 @@
+# perception.py
+
 import time
 from capsule_flagger import flag_capsule
 from state_manager import StateManager
@@ -45,6 +47,9 @@ def process_capsule(capsule: PerceptionCapsule):
     # 2. Flag capsule
     flags = flag_capsule(capsule)
     capsule.flags = flags
+
+    # 2.5 Commit to short-term memory
+    short_term.add_capsule(capsule)
 
     # 3. Evaluate state
     wake_trigger = {
