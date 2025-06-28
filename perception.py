@@ -9,6 +9,7 @@ from dream_reflections import DreamReflections
 from emotional_state import EmotionalState
 from reinforcement_logger import ReinforcementLogger
 from behavioral_cognition import BehaviorInterpreter
+from self_reasoning import run_self_reasoning  # <-- introspection loop
 
 # Initialize modules
 short_term = ShortTermMemory()
@@ -40,18 +41,18 @@ class PerceptionCapsule:
         }
 
 def process_capsule(capsule: PerceptionCapsule):
-    # 1. Update emotion
+    # 1. Update emotional state
     for emotion, value in capsule.emotion_vector.items():
         emotional_state.update_emotion(emotion, value)
 
-    # 2. Flag capsule
+    # 2. Flag capsule and add flags
     flags = flag_capsule(capsule)
     capsule.flags = flags
 
-    # 2.5 Commit to short-term memory
+    # 3. Store in short-term memory
     short_term.add_capsule(capsule)
 
-    # 3. Evaluate state
+    # 4. Evaluate state
     wake_trigger = {
         "type": "sound" if "audio" in capsule.stimulus else "motion"
     }
@@ -61,7 +62,11 @@ def process_capsule(capsule: PerceptionCapsule):
     else:
         state_manager.evaluate_state(stimulus=wake_trigger)
 
-    # 4. Log feedback
+    # 5. Reflect if introspective signal present
+    if capsule.emotion_vector.get("guilt", 0) > 0.6 or capsule.behavior == "ruminate":
+        run_self_reasoning()
+
+    # 6. Log reinforcement feedback
     dom_emotion = list(capsule.emotion_vector.keys())[0]
     dom_intensity = capsule.emotion_vector[dom_emotion]
     reinforcement.log_feedback(
@@ -73,7 +78,7 @@ def process_capsule(capsule: PerceptionCapsule):
         reinforcement=capsule.reinforcement
     )
 
-    # 5. Form cognitive state
+    # 7. Generate cognitive state
     cognitive_state = {
         "emotional_vector": capsule.emotion_vector,
         "prediction_vector": {},
