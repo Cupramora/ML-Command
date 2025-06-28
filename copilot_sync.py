@@ -60,4 +60,4 @@ if __name__ == '__main__':
     write_summary(index, SUMMARY_FILE)
     files = list(index.keys()) + [SUMMARY_FILE]
     zip_payload(files, BUNDLE_FILE)
-    print(f"✅ Copilot bundle created: {BUNDLE_FILE}")
+    print(f" Copilot bundle created: {BUNDLE_FILE}")
