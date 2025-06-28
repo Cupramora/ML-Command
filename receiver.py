@@ -1,9 +1,13 @@
+# receiver.py
+
 from gatekeeper import decrypt_payload, encrypt_payload
 from handler import handle_command
 from speak import say
+from long_term_memory import LongTermMemory
 
 import socket
 import time
+long_term = LongTermMemory()
 
 # ASCII-safe voice log
 def append_to_voice_log(text):
@@ -32,6 +36,10 @@ def run_receiver():
                     cmd = decrypt_payload(data.decode())
                     task = cmd.get("task", "unknown")
                     task_id = cmd.get("id")
+                    if cmd.get("type") == "capsule":
+                        long_term.store_capsule(cmd)
+                        say("memory_saved", {"task": "capsule memory", "mood": "satisfied"})
+                        append_to_voice_log(" Capsule stored in long-term memory.")
 
                     print(f"[Receiver] Received command: {task} (ID: {task_id})")
                     say("task_received", {"task": task, "mood": "curious"})
@@ -44,11 +52,10 @@ def run_receiver():
                         "id": task_id
                     }
                     conn.sendall(encrypt_payload(ack).encode())
-
+                    
                     result = handle_command(cmd)
                     conn.sendall(encrypt_payload(result).encode())
                     say("task_completed", {"task": task, "mood": "confident"})
-
                     append_to_voice_log(f"Task '{task}' completed.")
 
                 except Exception as e:
