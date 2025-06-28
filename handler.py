@@ -4,13 +4,14 @@ from sight import scan_area
 from panic import trigger_panic
 from speak import say
 from long_term_memory import LongTermMemory
+from self_reasoning import run_self_reasoning
 
 long_term = LongTermMemory()
 
 def handle_command(cmd):
     task = cmd.get("task", "").lower()
 
-    # Memory recall
+    # Reflective memory recall
     if task == "reflect_on":
         tag = cmd.get("tag", "")
         results = long_term.search_by_tag(tag)
@@ -26,6 +27,10 @@ def handle_command(cmd):
             "tag": tag,
             "reflection": reflection
         }
+
+    # Self-reasoning loop
+    elif task == "self_reason":
+        return run_self_reasoning()
 
     # Vision task
     elif task == "scan_area":
