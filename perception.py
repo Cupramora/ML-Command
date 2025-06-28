@@ -4,6 +4,8 @@ import time
 from capsule_flagger import flag_capsule
 from state_manager import StateManager
 from expansion_tracker import suggest_expansion
+from short_term import ShortTermMemory
+from dream_reflections import DreamReflections
 
 def process_capsule(capsule):
     flags = capsule.get("flags", {})
