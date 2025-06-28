@@ -1,36 +1,30 @@
-# perception.py
-
 import time
 from capsule_flagger import flag_capsule
 from state_manager import StateManager
 from expansion_tracker import suggest_expansion
+from short_term import ShortTermMemory
+from dream_reflections import DreamReflections
+from emotional_state import EmotionalState
+from reinforcement_logger import ReinforcementLogger
+from behavioral_cognition import BehaviorInterpreter
 
-def process_capsule(capsule):
-    flags = capsule.get("flags", {})
-    summary = capsule.get("summary", "").lower()
+# Initialize modules
+short_term = ShortTermMemory()
+dream_state = DreamReflections()
+state_manager = StateManager(short_term, dream_state)
+emotional_state = EmotionalState()
+reinforcement = ReinforcementLogger()
+behavior_engine = BehaviorInterpreter()
 
-    if "missing_visual_context" in flags:
-        suggest_expansion(
-            reason="Visual data incomplete during scan.",
-            suggestion="Add infrared or low-light camera.",
-            severity="moderate"
-        )
-
-    if "terrain_mismatch" in flags and "mobility" in capsule.get("capsule_type", ""):
-        suggest_expansion(
-            reason="Chassis unsuitable for local terrain.",
-            suggestion="Enhance mobility or request hover module.",
-            severity="high"
-        )
 class PerceptionCapsule:
     def __init__(self, stimulus, emotion_vector, behavior, context, feedback, reinforcement):
         self.timestamp = time.time()
-        self.stimulus = stimulus                  # e.g. {"caller": "Dane", "gesture": "high_five"}
-        self.emotion_vector = emotion_vector      # e.g. {"joy": 0.7}
-        self.behavior = behavior                  # e.g. "come_when_called"
-        self.context = context                    # e.g. "Dane beckoned, then offered high five"
-        self.feedback = feedback                  # e.g. "positive"
-        self.reinforcement = reinforcement        # e.g. 0.4
+        self.stimulus = stimulus
+        self.emotion_vector = emotion_vector
+        self.behavior = behavior
+        self.context = context
+        self.feedback = feedback
+        self.reinforcement = reinforcement
 
     def to_dict(self):
         return {
@@ -42,15 +36,6 @@ class PerceptionCapsule:
             "feedback": self.feedback,
             "reinforcement": self.reinforcement
         }
-from emotional_state import EmotionalState
-from reinforcement_logger import ReinforcementLogger
-from behavioral_cognition import BehaviorInterpreter
-
-# Initialize modules (or pass them in later)
-emotional_state = EmotionalState()
-reinforcement = ReinforcementLogger()
-behavior_engine = BehaviorInterpreter()
-state_manager = StateManager()
 
 def process_capsule(capsule: PerceptionCapsule):
     # 1. Update emotion
@@ -103,4 +88,3 @@ def process_capsule(capsule: PerceptionCapsule):
         "flags": flags,
         "state": state_manager.state
     }
-
