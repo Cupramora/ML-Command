@@ -3,12 +3,32 @@
 from sight import scan_area
 from panic import trigger_panic
 from speak import say
+from long_term_memory import LongTermMemory
+
+long_term = LongTermMemory()
 
 def handle_command(cmd):
     task = cmd.get("task", "").lower()
 
+    # Memory recall
+    if task == "reflect_on":
+        tag = cmd.get("tag", "")
+        results = long_term.search_by_tag(tag)
+
+        if not results:
+            say("memory_not_found", {"tag": tag, "mood": "confused"})
+            return {"status": "no_match", "tag": tag}
+
+        reflection = results[-1]["content"].get("context", "...")
+        say("memory_recalled", {"tag": tag, "mood": "nostalgic"})
+        return {
+            "status": "success",
+            "tag": tag,
+            "reflection": reflection
+        }
+
     # Vision task
-    if task == "scan_area":
+    elif task == "scan_area":
         return scan_area(cmd)
 
     # Voice task
