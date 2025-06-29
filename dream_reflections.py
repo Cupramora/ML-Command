@@ -1,8 +1,7 @@
-# dream_reflections.py
-
 import time
 import json
 import os
+# from perception import process_capsule, PerceptionCapsule  # Uncomment when wiring
 
 class DreamReflections:
     def __init__(self, log_path="dream_reflections.json"):
@@ -25,8 +24,9 @@ class DreamReflections:
             "summary": dream["summary"],
             "emotion": dream["emotion"],
             "amplified": dream["amplified"],
+            "mood": dream.get("mood", "neutral"),
             "ponderable": dream["amplified"] > 0.8,
-            "fade_timer": 86400  # 1 day until it fades from active recall
+            "fade_timer": 86400
         }
         self.reflections.append(entry)
         self._save()
@@ -42,21 +42,48 @@ class DreamReflections:
 
     def get_all_ponderables(self):
         return [r for r in self.reflections if r["ponderable"]]
-        from perception import process_capsule, PerceptionCapsule
 
-def reflect_on_recent(self):
-    recent = self.get_recent_reflection()
-    if not recent:
-        return None
+    def summarize_dream_log90(self):
+        now = time.time()
+        cutoff = now - (90 * 86400)
+        recent = [r for r in self.reflections if r["timestamp"] > cutoff]
 
-    capsule = PerceptionCapsule(
-        stimulus={"source": "internal", "memory_reference": recent["summary"]},
-        emotion_vector={recent["emotion"]: recent["amplified"] * 0.5},
-        behavior="reflect",
-        context=recent["summary"],
-        feedback="internal",
-        reinforcement=0.05
-    )
-    result = process_capsule(capsule)
-    print("💭 Dream Reflection Injected:", result["context"])
-    return result
+        if not recent:
+            return "🛌 No dream reflections in the last 90 days."
+
+        emotion_counts = {}
+        mood_counts = {}
+
+        for r in recent:
+            e = r["emotion"]
+            m = r.get("mood", "neutral")
+            emotion_counts[e] = emotion_counts.get(e, 0) + 1
+            mood_counts[m] = mood_counts.get(m, 0) + 1
+
+        summary = f"🧠 Dream Summary (last 90 days): {len(recent)} total\n"
+        summary += "\n💫 Emotions:\n"
+        for emotion, count in emotion_counts.items():
+            summary += f" - {emotion}: {count}\n"
+
+        summary += "\n🎭 Mood Expression:\n"
+        for mood, count in mood_counts.items():
+            summary += f" - {mood}: {count}\n"
+
+        return summary
+
+    def reflect_on_recent(self):
+        recent = self.get_recent_reflection()
+        if not recent:
+            return None
+
+        capsule = PerceptionCapsule(
+            stimulus={"source": "internal", "memory_reference": recent["summary"]},
+            emotion_vector={recent["emotion"]: recent["amplified"] * 0.5},
+            behavior="reflect",
+            context=recent["summary"],
+            feedback="internal",
+            reinforcement=0.05
+        )
+        result = process_capsule(capsule)
+        print(" Dream Reflection Injected:", result["capsule"]["context"])
+        return result
