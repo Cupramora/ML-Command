@@ -10,6 +10,7 @@ from emotional_state import EmotionalState
 from reinforcement_logger import ReinforcementLogger
 from behavioral_cognition import BehaviorInterpreter
 from self_reasoning import run_self_reasoning  # <-- introspection loop
+from social_mind import SocialMind
 
 # Initialize modules
 short_term = ShortTermMemory()
@@ -18,6 +19,7 @@ state_manager = StateManager(short_term, dream_state)
 emotional_state = EmotionalState()
 reinforcement = ReinforcementLogger()
 behavior_engine = BehaviorInterpreter()
+social_context = SocialMind()
 
 class PerceptionCapsule:
     def __init__(self, stimulus, emotion_vector, behavior, context, feedback, reinforcement):
