@@ -50,7 +50,10 @@ def process_capsule(capsule: PerceptionCapsule):
     # 2. Flag capsule and add flags
     flags = flag_capsule(capsule)
     capsule.flags = flags
-
+    
+    # 2.7 Social evaluation
+    social_result = social_context.evaluate_capsule_socially(capsule, agent="dane")
+    capsule.social_insight = social_result  # Attach result for downstream use
     # 3. Store in short-term memory
     short_term.add_capsule(capsule)
 
@@ -78,6 +81,7 @@ def process_capsule(capsule: PerceptionCapsule):
         context=capsule.context,
         feedback=capsule.feedback,
         reinforcement=capsule.reinforcement
+        mood=social_result["suggested_mood"]
     )
 
     # 7. Generate cognitive state
