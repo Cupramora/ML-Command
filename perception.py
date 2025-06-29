@@ -9,10 +9,12 @@ from dream_reflections import DreamReflections
 from emotional_state import EmotionalState
 from reinforcement_logger import ReinforcementLogger
 from behavioral_cognition import BehaviorInterpreter
-from self_reasoning import run_self_reasoning  # <-- introspection loop
+from self_reasoning import run_self_reasoning
 from social_mind import SocialMind
+from strategic_reasoner import StrategicReasoner
+from goal_stack import GoalStack
 
-# Initialize modules
+# initialize modules
 short_term = ShortTermMemory()
 dream_state = DreamReflections()
 state_manager = StateManager(short_term, dream_state)
@@ -20,6 +22,8 @@ emotional_state = EmotionalState()
 reinforcement = ReinforcementLogger()
 behavior_engine = BehaviorInterpreter()
 social_context = SocialMind()
+reasoner = StrategicReasoner(emotional_state)
+goal_stack = GoalStack()
 
 class PerceptionCapsule:
     def __init__(self, stimulus, emotion_vector, behavior, context, feedback, reinforcement):
@@ -43,35 +47,47 @@ class PerceptionCapsule:
         }
 
 def process_capsule(capsule: PerceptionCapsule):
-    # 1. Update emotional state
+    # 1. update emotional state
     for emotion, value in capsule.emotion_vector.items():
         emotional_state.update_emotion(emotion, value)
 
-    # 2. Flag capsule and add flags
+    # 2. flag capsule and add flags
     flags = flag_capsule(capsule)
     capsule.flags = flags
-    
-    # 2.7 Social evaluation
+
+    # 2.7 social evaluation
     social_result = social_context.evaluate_capsule_socially(capsule, agent="dane")
-    capsule.social_insight = social_result  # Attach result for downstream use
-    # 3. Store in short-term memory
+    capsule.social_insight = social_result
+
+    # 3. store in short-term memory
     short_term.add_capsule(capsule)
 
-    # 4. Evaluate state
+    # 4. evaluate state
     wake_trigger = {
         "type": "sound" if "audio" in capsule.stimulus else "motion"
     }
+
+    # 4.5 strategic preview of top goal
+    top_goal = goal_stack.get_top_goal()
+    if top_goal:
+        strategy = reasoner.simulate_outcome(top_goal, capsule.context)
+        capsule.goal_preview = strategy
+
+        if strategy["confidence"] < 0.4:
+            top_goal.demote(0.1)
+        elif strategy["confidence"] > 0.8:
+            top_goal.promote(0.05)
 
     if flags.get("emotional_spike") or flags.get("novelty"):
         state_manager.evaluate_state(internal_drive={"novelty_detected": True})
     else:
         state_manager.evaluate_state(stimulus=wake_trigger)
 
-    # 5. Reflect if introspective signal present
+    # 5. reflect if introspective signal present
     if capsule.emotion_vector.get("guilt", 0) > 0.6 or capsule.behavior == "ruminate":
         run_self_reasoning()
 
-    # 6. Log reinforcement feedback
+    # 6. log reinforcement feedback
     dom_emotion = list(capsule.emotion_vector.keys())[0]
     dom_intensity = capsule.emotion_vector[dom_emotion]
     reinforcement.log_feedback(
@@ -80,11 +96,11 @@ def process_capsule(capsule: PerceptionCapsule):
         behavior=capsule.behavior,
         context=capsule.context,
         feedback=capsule.feedback,
-        reinforcement=capsule.reinforcement
+        reinforcement=capsule.reinforcement,
         mood=social_result["suggested_mood"]
     )
 
-    # 7. Generate cognitive state
+    # 7. form cognitive state
     cognitive_state = {
         "emotional_vector": capsule.emotion_vector,
         "prediction_vector": {},
