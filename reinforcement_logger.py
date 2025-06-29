@@ -6,7 +6,7 @@ class ReinforcementLogger:
         self.behavior_weights = {}      # e.g. {"tantrum": -0.2}
         self.behavior_confidence = {}   # e.g. {"smile": 0.6}
 
-    def log_feedback(self, emotion, intensity, behavior, context, feedback, reinforcement):
+    def log_feedback(self, emotion, intensity, behavior, context, feedback, reinforcement, mood=None):
         entry = {
             "timestamp": time.time(),
             "emotion": emotion,
@@ -15,6 +15,7 @@ class ReinforcementLogger:
             "context": context,
             "feedback": feedback,
             "reinforcement": reinforcement
+            "mood": mood
         }
         self.log.append(entry)
         self._update_behavior_weight(behavior, reinforcement)
