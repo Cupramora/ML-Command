@@ -1,9 +1,11 @@
 # dream_reflections.py
+# stores symbolic dream fragments, mood, and strategic confidence for reflection
 
 import time
 import json
 import os
-# from perception import process_capsule, PerceptionCapsule  # Uncomment when wiring
+from perception import process_capsule, PerceptionCapsule
+from self_model import self_model  # tracks recurring breakdowns
 
 class DreamReflections:
     def __init__(self, log_path="dream_reflections.json"):
@@ -27,6 +29,7 @@ class DreamReflections:
             "emotion": dream["emotion"],
             "amplified": dream["amplified"],
             "mood": dream.get("mood", "neutral"),
+            "strategy": dream.get("strategy", {}),
             "ponderable": dream["amplified"] > 0.8,
             "fade_timer": 86400
         }
@@ -51,7 +54,7 @@ class DreamReflections:
         recent = [r for r in self.reflections if r["timestamp"] > cutoff]
 
         if not recent:
-            return "🛌 No dream reflections in the last 90 days."
+            return " No dream reflections in the last 90 days."
 
         emotion_counts = {}
         mood_counts = {}
@@ -62,12 +65,12 @@ class DreamReflections:
             emotion_counts[e] = emotion_counts.get(e, 0) + 1
             mood_counts[m] = mood_counts.get(m, 0) + 1
 
-        summary = f"🧠 Dream Summary (last 90 days): {len(recent)} total\n"
-        summary += "\n💫 Emotions:\n"
+        summary = f" Dream Summary (last 90 days): {len(recent)} total\n"
+        summary += "\n Emotions:\n"
         for emotion, count in emotion_counts.items():
             summary += f" - {emotion}: {count}\n"
 
-        summary += "\n🎭 Mood Expression:\n"
+        summary += "\n Mood Expression:\n"
         for mood, count in mood_counts.items():
             summary += f" - {mood}: {count}\n"
 
@@ -77,6 +80,12 @@ class DreamReflections:
         recent = self.get_recent_reflection()
         if not recent:
             return None
+
+        # log low-confidence decisions to self_model
+        if recent.get("strategy"):
+            conf = recent["strategy"].get("confidence", 0.5)
+            if conf < 0.3:
+                self_model.record_failure("low_confidence_" + recent["summary"])
 
         capsule = PerceptionCapsule(
             stimulus={"source": "internal", "memory_reference": recent["summary"]},
