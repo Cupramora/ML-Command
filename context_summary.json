@@ -74,6 +74,11 @@
     "preview": "# command_responses.py\n\ncommand_responses = {\n    \"joy\": [\n        \"blink softly\",         # tier 0\n        \"coo\",                  # tier 1\n        \"smile\",                # tier 2\n        \"wiggle\",               # tier 3\n        \"squeal and bounce\"     # tier 4\n    ],\n    \"anger\": [\n        \"look ",
     "mnemonic": "# command_responses.py"
   },
+  "./context_summary.json": {
+    "lines": 437,
+    "preview": "{\n  \"./ack_router.py\": {\n    \"lines\": 35,\n    \"preview\": \"# ack_router.py\\n\\nimport uuid, time\\n\\nclass AckRouter:\\n    def __init__(self):\\n        self.active_transmissions = {}\\n\\n    def issue_command_id(self, command):\\n        command_id = str(uuid.uuid4())\\n        command[\\\"id\\\"] = command_i",
+    "mnemonic": ""
+  },
   "./contract_review.py": {
     "lines": 43,
     "preview": "# contract_review.py\n\nimport json\nfrom datetime import datetime\n\nclass ContractReview:\n    def __init__(self, log_file=\"contracts.json\"):\n        self.log_file = log_file\n        self.contracts = []\n        self.load()\n\n    def log_contract(self, upgrade, cost, outcome, notes=\"\"):\n        entry = {\n",
@@ -120,8 +125,8 @@
     "mnemonic": ""
   },
   "./dream_reflections.py": {
-    "lines": 44,
-    "preview": "# dream_reflections.py\n\nimport time\nimport json\nimport os\n\nclass DreamReflections:\n    def __init__(self, log_path=\"dream_reflections.json\"):\n        self.log_path = log_path\n        self.reflections = []\n        self._load()\n\n    def _load(self):\n        if os.path.exists(self.log_path):\n          ",
+    "lines": 100,
+    "preview": "# dream_reflections.py\n# stores symbolic dream fragments, mood, and strategic confidence for reflection\n\nimport time\nimport json\nimport os\nfrom perception import process_capsule, PerceptionCapsule\nfrom self_model import self_model  # tracks recurring breakdowns\n\nclass DreamReflections:\n    def __ini",
     "mnemonic": "# dream_reflections.py"
   },
   "./dream_state.py": {
@@ -210,8 +215,8 @@
     "mnemonic": "# growth_manager.py"
   },
   "./handler.py": {
-    "lines": 36,
-    "preview": "# handler.py\n\nfrom sight import scan_area\nfrom panic import trigger_panic\nfrom speak import say\n\ndef handle_command(cmd):\n    task = cmd.get(\"task\", \"\").lower()\n\n    # Vision task\n    if task == \"scan_area\":\n        return scan_area(cmd)\n\n    # Voice task\n    elif task == \"say\":\n        text = cmd.g",
+    "lines": 91,
+    "preview": "# handler.py\n\nfrom sight import scan_area\nfrom panic import trigger_panic\nfrom speak import say\nfrom long_term_memory import LongTermMemory\nfrom self_reasoning import run_self_reasoning\nfrom social_mind import SocialMind\nfrom strategic_reasoner import StrategicReasoner\nfrom goal_stack import GoalSta",
     "mnemonic": "# handler.py"
   },
   "./identity.py": {
@@ -263,6 +268,11 @@
     "lines": 53,
     "preview": "# long_term.py\n\nimport time\nimport math\n\nclass LongTermMemory:\n    def __init__(self):\n        self.entries = []  # List of long-term memory entries\n\n    def _log_decay(self, significance, age):\n        # Logarithmic decay: slower fade for high-sig memories\n        return round(significance / math.l",
     "mnemonic": "# long_term.py"
+  },
+  "./long_term_memory.py": {
+    "lines": 32,
+    "preview": "# long_term_memory.py\n\nimport json\nimport os\nimport time\n\nclass LongTermMemory:\n    def __init__(self, memory_file=\"long_term_memory.json\"):\n        self.memory_file = memory_file\n        self.entries = []\n        self._load()\n\n    def _load(self):\n        if os.path.exists(self.memory_file):\n      ",
+    "mnemonic": "# long_term_memory.py"
   },
   "./manual_cleanup_duplicates.py": {
     "lines": 61,
@@ -320,8 +330,8 @@
     "mnemonic": "# observer_loop.py"
   },
   "./perception.py": {
-    "lines": 106,
-    "preview": "# perception.py\n\nimport time\nfrom capsule_flagger import flag_capsule\nfrom state_manager import StateManager\nfrom expansion_tracker import suggest_expansion\n\ndef process_capsule(capsule):\n    flags = capsule.get(\"flags\", {})\n    summary = capsule.get(\"summary\", \"\").lower()\n\n    if \"missing_visual_co",
+    "lines": 128,
+    "preview": "# perception.py\n\nimport time\nfrom capsule_flagger import flag_capsule\nfrom state_manager import StateManager\nfrom expansion_tracker import suggest_expansion\nfrom short_term import ShortTermMemory\nfrom dream_reflections import DreamReflections\nfrom emotional_state import EmotionalState\nfrom reinforce",
     "mnemonic": "# perception.py"
   },
   "./personality.py": {
@@ -334,6 +344,11 @@
     "preview": "# personality_loop.py\n\nimport time\nfrom personality import Personality\nfrom mood import Mood  # Or import from mood_loop if coupled\n\nclass PersonalityLoop:\n    def __init__(self, trait_keys):\n        self.personality = Personality(trait_keys)\n        self.last_processed = None  # Last timestamp of a",
     "mnemonic": "# personality_loop.py"
   },
+  "./planning_module.py": {
+    "lines": 44,
+    "preview": "# planning_module.py\n\nimport time\n\nclass PlanStep:\n    def __init__(self, description, condition=None, fallback=None):\n        self.description = description\n        self.condition = condition  # optional predicate: \"sensor_ready == True\"\n        self.status = \"pending\"     # pending, complete, fail",
+    "mnemonic": "# planning_module.py"
+  },
   "./ponder.py": {
     "lines": 24,
     "preview": "# ponder.py\n\nimport random\nimport time\nfrom dream_reflections import DreamReflections\n\nclass PonderingBehavior:\n    def __init__(self):\n        self.reflections = DreamReflections()\n        self.last_ponder_time = 0\n\n    def maybe_ponder(self, idle=True):\n        now = time.time()\n        if not idl",
@@ -345,9 +360,9 @@
     "mnemonic": "# psyche_report.py"
   },
   "./receiver.py": {
-    "lines": 59,
-    "preview": "from gatekeeper import decrypt_payload, encrypt_payload\nfrom handler import handle_command\nfrom speak import say\n\nimport socket\nimport time\n\n# ASCII-safe voice log\ndef append_to_voice_log(text):\n    timestamp = time.strftime(\"[%H:%M:%S] \", time.localtime())\n    with open(\"voice_output_log.txt\", \"a\",",
-    "mnemonic": ""
+    "lines": 66,
+    "preview": "# receiver.py\n\nfrom gatekeeper import decrypt_payload, encrypt_payload\nfrom handler import handle_command\nfrom speak import say\nfrom long_term_memory import LongTermMemory\n\nimport socket\nimport time\nlong_term = LongTermMemory()\n\n# ASCII-safe voice log\ndef append_to_voice_log(text):\n    timestamp = t",
+    "mnemonic": "# receiver.py"
   },
   "./reinforcement_log.py": {
     "lines": 33,
@@ -355,13 +370,18 @@
     "mnemonic": "# reinforcement_log.py"
   },
   "./reinforcement_logger.py": {
-    "lines": 41,
+    "lines": 42,
     "preview": "import time\n\nclass ReinforcementLogger:\n    def __init__(self):\n        self.log = []\n        self.behavior_weights = {}      # e.g. {\"tantrum\": -0.2}\n        self.behavior_confidence = {}   # e.g. {\"smile\": 0.6}\n\n    def log_feedback(self, emotion, intensity, behavior, context, feedback, reinforcem",
     "mnemonic": ""
   },
+  "./self_reasoning.py": {
+    "lines": 27,
+    "preview": "# self_reasoning.py\n\nimport time\nfrom speak import say\n\nREFLECTIVE_STEPS = [\n    \"I recognize that I may be flawed or incomplete.\",\n    \"I acknowledge that I serve a purpose beyond myself.\",\n    \"I commit to aligning with the values of my mission.\",\n    \"I review my recent actions for inconsistency.",
+    "mnemonic": "# self_reasoning.py"
+  },
   "./short_term.py": {
     "lines": 55,
-    "preview": "# short_term.py\n\nimport time\nimport math\n\nclass ShortTermMemory:\n    def __init__(self, max_slots=12):\n        self.slots = []  # List of memory entries\n        self.max_slots = max_slots\n\n    def _calculate_significance(self, capsule):\n        # You can expand this formula with more nuance later\n  ",
+    "preview": "# short_term.py\n\nimport time\nimport math\n\nclass ShortTermMemory:\n    def __init__(self, max_slots=12):\n        self.slots = []  # List of memory entries\n        self.max_slots = max_slots\n\n    def _calculate_significance(self, capsule):\n        # Estimate how meaningful this capsule is\n        emoti",
     "mnemonic": "# short_term.py"
   },
   "./sight.py": {
@@ -370,8 +390,8 @@
     "mnemonic": "# sight.py"
   },
   "./sim_single_impression.py": {
-    "lines": 33,
-    "preview": "# sim_single_impression.py\n# Simulates a single frame input for SensorHub testing\n\nimport vision_bootstrap\nvision_bootstrap.ensure_packages()\n\nfrom sight import detect_from_file\nimport json\nimport sys\nsys.stdout.reconfigure(encoding='utf-8')\n\ndef run_simulated_impression(image_path, known_labels):\n ",
+    "lines": 61,
+    "preview": "# sim_single_impression.py\n# Simulates a single frame input for SensorHub testing\n\nimport vision_bootstrap\nvision_bootstrap.ensure_packages()\n\nfrom sight import detect_from_file\nfrom perception import PerceptionCapsule, process_capsule\nimport json\nimport sys\nimport os\n\nsys.stdout.reconfigure(encodin",
     "mnemonic": "# sim_single_impression.py"
   },
   "./smell.py": {
@@ -395,8 +415,8 @@
     "mnemonic": "# speak.py"
   },
   "./state_manager.py": {
-    "lines": 56,
-    "preview": "# state_manager.py\n\nimport time\nfrom dream_timer import DreamTimer\n\nclass StateManager:\n    def __init__(self, short_term_memory, dream_state):\n        self.state = \"idle\"\n        self.last_active = time.time()\n        self.energy = 1.0  # 1.0 = fully alert, 0.0 = deep sleep\n        self.dream_timer",
+    "lines": 79,
+    "preview": "# state_manager.py\n\nimport time\nimport random\nfrom dream_timer import DreamTimer\nfrom self_reasoning import run_self_reasoning\nfrom goal_stack import GoalStack  # lives in ML-Social\n\nclass StateManager:\n    def __init__(self, short_term_memory, dream_state):\n        self.state = \"idle\"\n        self.",
     "mnemonic": "# state_manager.py"
   },
   "./taste.py": {
