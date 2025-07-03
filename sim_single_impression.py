@@ -57,5 +57,5 @@ def run_simulated_impression(image_path, known_labels):
 
 if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    image_path = os.path.join(script_dir, "guess1.png")  # Updated filename here
+    image_path = os.path.join(script_dir, "guess2.png")  # Updated filename here
     run_simulated_impression(image_path, known_labels=["person", "wall"])
