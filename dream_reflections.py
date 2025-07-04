@@ -4,7 +4,6 @@
 import time
 import json
 import os
-from perception import process_capsule, PerceptionCapsule
 from self_model import self_model  # tracks recurring breakdowns
 
 class DreamReflections:
@@ -77,12 +76,12 @@ class DreamReflections:
         return summary
 
     def reflect_on_recent(self):
-        from perception import process_capsule, PerceptionCapsule  # lazy import here
+        from perception import process_capsule, PerceptionCapsule  # lazy import to fix circular import
 
         recent = self.get_recent_reflection()
         if not recent:
             return None
-    
+
         # log low-confidence decisions to self_model
         if recent.get("strategy"):
             conf = recent["strategy"].get("confidence", 0.5)
