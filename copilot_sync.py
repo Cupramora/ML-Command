@@ -59,7 +59,7 @@ if __name__ == "__main__":
             full_summary.update(summary)
             all_files.extend(summary.keys())
         else:
-            print(f"⚠ Repo not found: {repo}")
+            print(f" Repo not found: {repo}")
 
     with open(SUMMARY_FILE, "w", encoding="utf-8") as f:
         json.dump(full_summary, f, indent=2)
