@@ -8,6 +8,8 @@ import json
 import zipfile
 
 # === CONFIGURATION ===
+# === CONFIGURATION ===
+BASE_PATH = os.path.expanduser("~/Documents/GitHub/Cupramora")
 REPOS = [
     "ML-Command", "ML-SensorHub", "ML-ElectricVariationControl", "ML-FlightControl",
     "ML-RenderMorph", "ML-Social", "ML-Upgrades", "OpenCV", "Toolbox", "ultralytics"
@@ -53,9 +55,10 @@ if __name__ == "__main__":
 
     print(" Scanning all repositories for Copilot sync...\n")
     for repo in REPOS:
-        if os.path.exists(repo):
+        full_path = os.path.join(BASE_PATH, repo)
+        if os.path.exists(full_path):
             print(f" Indexing: {repo}")
-            summary = scan_repo(repo)
+            summary = scan_repo(full_path)
             full_summary.update(summary)
             all_files.extend(summary.keys())
         else:
