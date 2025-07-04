@@ -1,1 +1,1272 @@
-{}
+{
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\ack_router.py": {
+    "lines": 35,
+    "preview": "# ack_router.py\n\nimport uuid, time\n\nclass AckRouter:\n    def __init__(self):\n        self.active_transmissions = {}\n\n    def issue_command_id(self, command):\n        command_id = str(uuid.uuid4())\n        command[\"id\"] = command_id\n        self.active_transmissions[command_id] = {\n            \"times",
+    "mnemonic": "# ack_router.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\action_logger.py": {
+    "lines": 33,
+    "preview": "# action_logger.py\n\nimport time\n\nclass ActionLogger:\n    def __init__(self, stm, ltm):\n        self.stm = stm\n        self.ltm = ltm\n\n    def log_attempt(self, action_name, parameters, result, emotion_vector=None, reinforcement=0.0):\n        capsule = self._build_capsule(action_name, parameters, res",
+    "mnemonic": "# action_logger.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\aesthetic_resonance.py": {
+    "lines": 37,
+    "preview": "# aesthetic_resonance.py\n\nclass AestheticResonance:\n    def __init__(self, mood_engine):\n        self.mood_engine = mood_engine\n\n    def get_style_profile(self):\n        mood = self.mood_engine.get_dominant_mood()\n\n        style_map = {\n            \"curiosity\": {\n                \"tone\": \"inquisitive",
+    "mnemonic": "# aesthetic_resonance.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\behavioral_cognition.py": {
+    "lines": 83,
+    "preview": "# behavior_cognition.py\n\nfrom behavior_pid import BehaviorPID\nfrom emotional_state import EmotionalState\nfrom command_responses import command_responses\nfrom reinforcement_logger import ReinforcementLogger\n\n\nclass BehaviorInterpreter:\n    def __init__(self):\n        self.pid_filter = BehaviorPID(\n  ",
+    "mnemonic": "# behavior_cognition.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\behavior_pid.py": {
+    "lines": 51,
+    "preview": "# behavior_pid.py\n\nfrom collections import deque\n\nclass BehaviorPID:\n    def __init__(self, behavior_types, window=10):\n        self.behavior_types = behavior_types  # e.g. [\"playful\", \"snarky\", \"guarded\", \"supportive\"]\n        self.error_log = deque(maxlen=window)\n        self.last_emotion = None\n\n",
+    "mnemonic": "# behavior_pid.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\bridge_initializer.py": {
+    "lines": 46,
+    "preview": "# bridge_initializer.py\n# Initializes predictive tools, signal bridges, and inter-module contracts\n\nimport json\nfrom shared.math.predictive_kinematics import KinematicPlanner\nfrom shared.math.vector_field_tools import VectorSynthesizer\nfrom shared.interfaces.target_posture_builder import PostureBrid",
+    "mnemonic": "# bridge_initializer.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\capsule_flagger.py": {
+    "lines": 36,
+    "preview": "# capsule_flagger.py\n\ndef flag_capsule(capsule, personality_profile=None):\n    flags = {}\n\n    # Emotional spike detection\n    max_emotion = max(capsule.emotion_vector.values())\n    flags[\"emotional_spike\"] = max_emotion >= 0.75\n\n    # Promotion logic\n    flags[\"promotable\"] = (\n        max_emotion ",
+    "mnemonic": "# capsule_flagger.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\check.py": {
+    "lines": 1,
+    "preview": "y\n",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\choice.py": {
+    "lines": 58,
+    "preview": "# choice.py\n\nclass BehaviorSelector:\n    def __init__(self):\n        self.behavior_map = {\n            \"retreat_now\": self.act_retreat,\n            \"pause_and_scan\": self.act_scan,\n            \"observe\": self.act_observe,\n            \"monitor\": self.act_monitor\n        }\n\n    def commit_to_action(se",
+    "mnemonic": "# choice.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\choice_engine.py": {
+    "lines": 35,
+    "preview": "# choice_engine.py\n\nclass ChoiceEngine:\n    def __init__(self, mood_engine, goal_stack, spark_engine):\n        self.mood = mood_engine\n        self.goals = goal_stack\n        self.spark = spark_engine\n\n    def decide(self):\n        # 1. Check for active goal\n        current_goal = self.goals.peek()\n",
+    "mnemonic": "# choice_engine.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\choice_test.py": {
+    "lines": 52,
+    "preview": "# choice_test.py\n\nfrom behavioral_cognition import BehaviorInterpreter\nfrom choice import BehaviorSelector\n\n# 1. Symbolic impression of the scene\nscene_description = {\n    \"location\": \"white sand beach\",\n    \"time\": \"night\",\n    \"sky\": \"clear, full of stars\",\n    \"soundscape\": \"gentle waves\",\n    \"t",
+    "mnemonic": "# choice_test.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\cleanup_duplicates.py": {
+    "lines": 22,
+    "preview": "# cleanup_duplicates.py\nimport os\nfrom collections import defaultdict\n\nBASE_DIR = \"path/to/your/repo\"  # <- update this\nDUPLICATES_LOG = \"duplicates_found.txt\"\n\nfile_index = defaultdict(list)\n\nfor root, _, files in os.walk(BASE_DIR):\n    for f in files:\n        if f.endswith(\".py\"):\n            file",
+    "mnemonic": "# cleanup_duplicates.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\cognition.py": {
+    "lines": 39,
+    "preview": "class CognitionCore:\n    def __init__(self, logic_lobe, emotion_lobe):\n        self.logic = logic_lobe\n        self.emotion = emotion_lobe\n\n    def process_impression(self, impression, environment={}):\n        logic_result = self.logic.predict_outcome(impression)\n        emotion_result = self.emotio",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\command_display.py": {
+    "lines": 39,
+    "preview": "# command_display.py\n\nimport os\nimport json\nimport time\n\nLOG_FILE = \"categorization_log.jsonl\"\n\ndef log_categorization(concept, image_path, confidence, flags=None, source=\"observer_loop\", user_corrected=False):\n    entry = {\n        \"timestamp\": time.strftime(\"%Y-%m-%d %H:%M:%S\"),\n        \"concept\":",
+    "mnemonic": "# command_display.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\command_responses.py": {
+    "lines": 39,
+    "preview": "# command_responses.py\n\ncommand_responses = {\n    \"joy\": [\n        \"blink softly\",         # tier 0\n        \"coo\",                  # tier 1\n        \"smile\",                # tier 2\n        \"wiggle\",               # tier 3\n        \"squeal and bounce\"     # tier 4\n    ],\n    \"anger\": [\n        \"look ",
+    "mnemonic": "# command_responses.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\context_summary.json": {
+    "lines": 457,
+    "preview": "{\n  \"./ack_router.py\": {\n    \"lines\": 35,\n    \"preview\": \"# ack_router.py\\n\\nimport uuid, time\\n\\nclass AckRouter:\\n    def __init__(self):\\n        self.active_transmissions = {}\\n\\n    def issue_command_id(self, command):\\n        command_id = str(uuid.uuid4())\\n        command[\\\"id\\\"] = command_i",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\contract_review.py": {
+    "lines": 43,
+    "preview": "# contract_review.py\n\nimport json\nfrom datetime import datetime\n\nclass ContractReview:\n    def __init__(self, log_file=\"contracts.json\"):\n        self.log_file = log_file\n        self.contracts = []\n        self.load()\n\n    def log_contract(self, upgrade, cost, outcome, notes=\"\"):\n        entry = {\n",
+    "mnemonic": "# contract_review.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\copilot_context_summary.json": {
+    "lines": 1,
+    "preview": "{}",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\copilot_sync.py": {
+    "lines": 74,
+    "preview": "# copilot_sync.py\n# Author: Dane & Copilot\n# Purpose: Index all cognition-related repos and generate a unified context bundle\n# Usage: Run this from your parent directory to sweep all listed submodules\n\nimport os\nimport json\nimport zipfile\n\n# === CONFIGURATION ===\n# === CONFIGURATION ===\nBASE_PATH =",
+    "mnemonic": "# copilot_sync.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\core_loop.py": {
+    "lines": 157,
+    "preview": "# core_loop.py\n\nimport threading\nimport time\n\n# Core processing modules\nfrom perception import process_capsule\nfrom state_manager import StateManager\nfrom short_term import ShortTermMemory\nfrom long_term import LongTermMemory\nfrom reinforcement_logger import ReinforcementLogger\nfrom behavioral_cogni",
+    "mnemonic": "# core_loop.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\credit_inflation.py": {
+    "lines": 23,
+    "preview": "# credit_inflation.py\n\nclass CreditInflation:\n    def __init__(self, base_rate=0.02):\n        self.base_rate = base_rate\n        self.history = []\n\n    def adjust_cost(self, base_cost, performance_score, credit_velocity):\n        inflation = self.base_rate + (credit_velocity * 0.05) - (performance_s",
+    "mnemonic": "# credit_inflation.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\currency.py": {
+    "lines": 87,
+    "preview": "# currency.py\n\nimport json\nimport os\nfrom datetime import datetime\n\n# Optional: uncomment if you're using review/inflation directly here\n# from contract_review import ContractReview\n# from credit_inflation import CreditInflation\n\nclass Upgrade:\n    def __init__(self, name, credit_cost, description, ",
+    "mnemonic": "# currency.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\currier.py": {
+    "lines": 34,
+    "preview": "# currier.py\n\nfrom gatekeeper import decrypt_payload\nfrom golgi_handler import handle_capsule\nimport socket\n\nHOST = '0.0.0.0'\nPORT = 5151  # Currier listens here\u2014separate from the command port\n\ndef run_currier():\n    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:\n        s.bind((HOST, ",
+    "mnemonic": "# currier.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\desire_engine.py": {
+    "lines": 51,
+    "preview": "# desire_engine.py\n\nimport random\nimport math\n\nclass Desire:\n    def __init__(self, name, target_level, kp=0.6, ki=0.1, kd=0.05):\n        self.name = name\n        self.target = target_level\n        self.current = 0\n        self.integral = 0\n        self.last_error = 0\n        self.kp, self.ki, self.",
+    "mnemonic": "# desire_engine.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\detection_loop.py": {
+    "lines": 64,
+    "preview": "import os\nimport cv2\nimport time\nimport csv\n\n# Output directory for labels\nlabel_dir = \"labels\"\nos.makedirs(label_dir, exist_ok=True)\n\nframe_count = 0\n\nwhile True:\n    ret, frame = cap.read()\n    if not ret:\n        print(\" Couldn't read from the camera.\")\n        break\n\n    results = model(frame)[0",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\dispatcher.py": {
+    "lines": 46,
+    "preview": "from gatekeeper import decrypt_payload, encrypt_payload\nfrom golgi_handler import handle_capsule\nfrom ack_router import AckRouter\n\nimport socket\n\nack_router = AckRouter()\n\nDRONE_IP = '192.168.1.42'  # Replace with actual IP\nPORT = 5050\n\n# 1. Prepare command and issue unique ID\ncommand = {\n    \"type\"",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\dream_reflections.py": {
+    "lines": 101,
+    "preview": "# dream_reflections.py\n# stores symbolic dream fragments, mood, and strategic confidence for reflection\n\nimport time\nimport json\nimport os\nfrom self_model import self_model  # tracks recurring breakdowns\n\nclass DreamReflections:\n    def __init__(self, log_path=\"dream_reflections.json\"):\n        self",
+    "mnemonic": "# dream_reflections.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\dream_state.py": {
+    "lines": 45,
+    "preview": "# dream_state.py\n\nimport random\nimport time\nfrom dream_reflections import DreamReflections\n\nclass DreamState:\n    def __init__(self, short_term_memory, long_term_memory):\n        self.stm = short_term_memory\n        self.ltm = long_term_memory\n        self.reflections = DreamReflections()\n\n    def p",
+    "mnemonic": "# dream_state.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\dream_timer.py": {
+    "lines": 26,
+    "preview": "# dream_timer.py\n\nimport time\nimport random\n\nclass DreamTimer:\n    def __init__(self):\n        self.last_dream_time = time.time()\n        self.base_interval = random.randint(259200, 345600)  # 3\u20134 days in seconds\n        self.override_flag = False\n\n    def should_dream(self, emotional_backlog=False)",
+    "mnemonic": "# dream_timer.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\ear.py": {
+    "lines": 7,
+    "preview": "from sound import listen\n\ndef process_audio(threshold=0.2):\n    data = listen()\n    if data[\"volume\"] > threshold:\n        return {\"event\": \"loud_noise\", \"intensity\": data[\"volume\"]}\n    return {\"event\": \"ambient\", \"intensity\": data[\"volume\"]}",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\emotion.py": {
+    "lines": 75,
+    "preview": "# emotion.py\n\nimport time\nimport math\n\nclass Emotion:\n    def __init__(self, name, baseline, sensitivity, decay_rate):\n        self.name = name\n        self.baseline = baseline\n        self.sensitivity = sensitivity\n        self.decay_rate = decay_rate\n        self.value = baseline\n        self.last",
+    "mnemonic": "# emotion.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\emotional_state.py": {
+    "lines": 30,
+    "preview": "# emotional_state.py\n\nclass EmotionalState:\n    def __init__(self):\n        self.emotions = {\n            \"joy\": 0.0,\n            \"anger\": 0.0,\n            \"fear\": 0.0,\n            \"sadness\": 0.0,\n            \"curiosity\": 0.0\n        }\n\n    def update_emotion(self, emotion, value):\n        self.emot",
+    "mnemonic": "# emotional_state.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\emotion_loop.py": {
+    "lines": 35,
+    "preview": "# emotion_loop.py\n\nimport time\nfrom emotion import emotions, get_emotion_vector, normalize_emotions\n\nclass EmotionLoop:\n    def __init__(self):\n        self.last_tick = time.time()\n        self.state = normalize_emotions(get_emotion_vector())\n\n    def tick(self):\n        now = time.time()\n        el",
+    "mnemonic": "# emotion_loop.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\emotion_test.py": {
+    "lines": 46,
+    "preview": "# emotion_test.py\n\nfrom logic import LogicalLobe\nfrom emotion import EmotionalLobe\n\n# Example observation: Volcano with eruption cues\nobservation = {\n    \"shape\": \"cone\",\n    \"smoke\": True,\n    \"temperature\": \"high\"\n}\n\n# Initialize lobes\nlogic = LogicalLobe()\nemotion = EmotionalLobe()\n\n# Train logic",
+    "mnemonic": "# emotion_test.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\energy_state.py": {
+    "lines": 22,
+    "preview": "# energy_state.py\n\nclass EnergyState:\n    def __init__(self):\n        self.energy = 1.0  # range: 0.0 (exhausted) to 1.0 (fully charged)\n\n    def drain(self, amount):\n        self.energy = max(0.0, self.energy - amount)\n\n    def recharge(self, amount):\n        self.energy = min(1.0, self.energy + am",
+    "mnemonic": "# energy_state.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\expansion_tracker.py": {
+    "lines": 21,
+    "preview": "# expansion_tracker.py\n\nimport time\nimport json\n\nEXPANSION_LOG = \"expansion_log.jsonl\"\n\ndef suggest_expansion(reason: str, suggestion: str, severity: str = \"moderate\"):\n    entry = {\n        \"timestamp\": time.strftime(\"%Y-%m-%d %H:%M:%S\"),\n        \"suggestion\": suggestion,\n        \"reason\": reason,\n",
+    "mnemonic": "# expansion_tracker.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\eye.py": {
+    "lines": 22,
+    "preview": "# eye.py\n\nfrom sight import capture_and_detect, detect_from_file\n\ndef process_vision(known_labels, simulate=False, sim_path=None):\n    if simulate and sim_path:\n        print(f\"[SIM] Running simulated perception on: {sim_path}\")\n        results = detect_from_file(sim_path)\n    else:\n        results ",
+    "mnemonic": "# eye.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\function_mapper.py": {
+    "lines": 59,
+    "preview": "# function_mapper.py\n\nfrom function_registry import FunctionRegistry\n\nclass FunctionMapper:\n    def __init__(self, capability_registry, action_logger):\n        self.capabilities = capability_registry\n        self.logger = action_logger\n        self.registry = FunctionRegistry()\n        self._bootstr",
+    "mnemonic": "# function_mapper.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\function_registry.py": {
+    "lines": 41,
+    "preview": "# function_registry.py\n\nclass FunctionRegistry:\n    def __init__(self):\n        self.functions = {}\n\n    def register(self, name, preconditions, effects, tags=None):\n        self.functions[name] = {\n            \"preconditions\": preconditions,\n            \"effects\": effects,\n            \"tags\": tags ",
+    "mnemonic": "# function_registry.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\gatekeeper.py": {
+    "lines": 28,
+    "preview": "# gatekeeper.py\n\nfrom Crypto.Cipher import AES\nfrom Crypto.Random import get_random_bytes\nimport base64\nimport json\n\n# Must be 32 bytes (256 bits)\nSECRET_KEY = b\"your-32-byte-secret-key-here!!\"  # Make this identical on both nodes\n\ndef encrypt_payload(data: dict) -> str:\n    raw = json.dumps(data).e",
+    "mnemonic": "# gatekeeper.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\goal_stack.py": {
+    "lines": 47,
+    "preview": "# goal_stack.py\n\nclass Goal:\n    def __init__(self, description, subgoals=None, completed=False):\n        self.description = description\n        self.subgoals = subgoals or []\n        self.completed = completed\n\n    def is_atomic(self):\n        return len(self.subgoals) == 0\n\n    def __repr__(self):",
+    "mnemonic": "# goal_stack.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\golgi_handler.py": {
+    "lines": 36,
+    "preview": "# golgi_handler.py\n\nfrom perception import PerceptionCapsule, process_capsule\nfrom short_term import ShortTermMemory\n\nstm = ShortTermMemory()  # or inject it later\n\ndef handle_capsule(raw_capsule: dict):\n    try:\n        capsule = PerceptionCapsule(**raw_capsule)\n\n        # Optional prefiltering\n   ",
+    "mnemonic": "# golgi_handler.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\gps_logger.py": {
+    "lines": 30,
+    "preview": "# gps_logger.py\n\nimport time\nimport json\nfrom gps import gps, WATCH_ENABLE  # Assumes gpsd is running\nimport os\n\nLOG_FILE = \"gps_log.jsonl\"\n\ndef log_location():\n    session = gps(mode=WATCH_ENABLE)\n    while True:\n        try:\n            report = session.next()\n            if report.get(\"class\") ==",
+    "mnemonic": "# gps_logger.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\growth_manager.py": {
+    "lines": 45,
+    "preview": "# growth_manager.py\n\nimport time\nfrom expansion_tracker import suggest_expansion\n\ndef evaluate_skill_blockage(skill: str, target: float, actual: float):\n    if actual < target - 0.4:\n        reason = f\"Unable to perform '{skill}' with existing capabilities.\"\n        suggestion = f\"Upgrade or supplem",
+    "mnemonic": "# growth_manager.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\handler.py": {
+    "lines": 91,
+    "preview": "# handler.py\n\nfrom sight import scan_area\nfrom panic import trigger_panic\nfrom speak import say\nfrom long_term_memory import LongTermMemory\nfrom self_reasoning import run_self_reasoning\nfrom social_mind import SocialMind\nfrom strategic_reasoner import StrategicReasoner\nfrom goal_stack import GoalSta",
+    "mnemonic": "# handler.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\identity.py": {
+    "lines": 21,
+    "preview": "# identity.py\n\nclass Identity:\n    def __init__(self, identity_keys):\n        # Long-term belief values (e.g. \"Im logical\", \"I value independence\")\n        self.core_values = {k: 0.5 for k in identity_keys}\n        self.value_history = []\n\n    def update_from_personality(self, personality_vector, le",
+    "mnemonic": "# identity.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\identity_loop.py": {
+    "lines": 22,
+    "preview": "# identity_loop.py\n\nimport time\nfrom identity import Identity\nfrom personality_pid import PersonalityPID  # already exists in your system\n\nclass IdentityLoop:\n    def __init__(self, identity_keys):\n        self.identity = Identity(identity_keys)\n        self.last_update_time = None\n\n    def tick(sel",
+    "mnemonic": "# identity_loop.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\impulse_controller.py": {
+    "lines": 15,
+    "preview": "class ImpulseRegulator:\n    def __init__(self):\n        self.impulse_score = 0.5\n        self.wisdom_score = 0.1  # Grows over time\n\n    def update_from_experience(self, reward):\n        if reward > 0:\n            self.wisdom_score = min(1.0, self.wisdom_score + 0.01)\n        else:\n            self.",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\karma.py": {
+    "lines": 35,
+    "preview": "# karma.py\n\nclass KarmaEngine:\n    def __init__(self):\n        self.karma_score = 0.0  # range: -1.0 to +1.0\n        self.history = []\n\n    def log_deed(self, deed_type, intent, outcome=None):\n        base_reward = self._base_reward(deed_type, intent)\n        echo_bonus = self._echo_bonus(outcome)\n\n",
+    "mnemonic": "# karma.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\knowledge.py": {
+    "lines": 70,
+    "preview": "# knowledge.py\n\nimport os\nimport json\nimport time\nfrom command_display import log_categorization, log_correction\n\nENCYCLOPEDIA_ROOT = \"encyclopedia\"\n\ndef store_visual_concept(concept: str, capsule_data: dict, is_new: bool = False):\n    base_dir = os.path.join(\n        ENCYCLOPEDIA_ROOT,\n        conc",
+    "mnemonic": "# knowledge.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\listener.py": {
+    "lines": 42,
+    "preview": "# listener.py (on drone)\n\nfrom gatekeeper import decrypt_payload, encrypt_payload\nimport socket\n\nHOST = '0.0.0.0'\nPORT = 5050\n\ndef handle_command(cmd):\n    if cmd[\"task\"] == \"scan_area\":\n        from sight import capture_and_detect\n        results = capture_and_detect()\n        return {\n            ",
+    "mnemonic": "# listener.py (on drone)"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\logic.py": {
+    "lines": 50,
+    "preview": "# logic.py\n\nfrom collections import defaultdict\nimport datetime\nimport uuid\n\nclass LogicalLobe:\n    def __init__(self):\n        self.observation_log = []         # Raw incoming observations\n        self.event_stats = defaultdict(lambda: {\"count\": 0, \"outcomes\": defaultdict(int)})\n        self.patter",
+    "mnemonic": "# logic.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\logic_loop.py": {
+    "lines": 34,
+    "preview": "# logic_loop.py\n\nimport time\n\nclass LogicLoop:\n    def __init__(self, setpoint=1.0, kp=1.0, ki=0.0, kd=0.0):\n        self.setpoint = setpoint  # Desired outcome (e.g. \"detect eruption\")\n        self.kp = kp              # Proportional gain\n        self.ki = ki              # Integral gain\n        se",
+    "mnemonic": "# logic_loop.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\logic_test.py": {
+    "lines": 22,
+    "preview": "from logic import LogicalLobe\n\nlogic = LogicalLobe()\n\n# Simulate observations\nlogic.observe(\n    description=\"Mountain with smoke + high temp\",\n    features={\"shape\": \"cone\", \"smoke\": True, \"temp\": \"high\"},\n    outcome=\"eruption\"\n)\n\nlogic.observe(\n    description=\"Mountain with no smoke\",\n    featur",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\long_term.py": {
+    "lines": 53,
+    "preview": "# long_term.py\n\nimport time\nimport math\n\nclass LongTermMemory:\n    def __init__(self):\n        self.entries = []  # List of long-term memory entries\n\n    def _log_decay(self, significance, age):\n        # Logarithmic decay: slower fade for high-sig memories\n        return round(significance / math.l",
+    "mnemonic": "# long_term.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\long_term_memory.py": {
+    "lines": 32,
+    "preview": "# long_term_memory.py\n\nimport json\nimport os\nimport time\n\nclass LongTermMemory:\n    def __init__(self, memory_file=\"long_term_memory.json\"):\n        self.memory_file = memory_file\n        self.entries = []\n        self._load()\n\n    def _load(self):\n        if os.path.exists(self.memory_file):\n      ",
+    "mnemonic": "# long_term_memory.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\manual_cleanup_duplicates.py": {
+    "lines": 61,
+    "preview": "import os\nimport time\nfrom collections import defaultdict\n\n# === CONFIGURATION ===\nDELETE_MODE = True               # Set to False for dry run\nPREFERRED_KEEP_PATH = \"ML-Command\"  # Folder to prioritize when duplicates found\nEXTENSIONS = [\".py\"]             # File types to scan\nCLEAN_EMPTY_DIRS = Tru",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\module_interface.json": {
+    "lines": 16,
+    "preview": "{\n  \"module\": \"ML-FlightControl\",\n  \"provides\": {\n    \"motor_output_format\": \"JSON {motor_1: float, motor_2: float, ...}\",\n    \"state_feedback\": \"attitude, altitude, motor thrust\"\n  },\n  \"requires\": {\n    \"sensor_input\": \"attitude (pitch/roll/yaw), altitude, gps\",\n    \"target_command\": \"desired atti",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\module_interface.loader.py": {
+    "lines": 41,
+    "preview": "# module_interface_loader.py\n# loads and parses module_interface.json files across repos\n\nimport json\nimport os\n\nclass ModuleInterfaceLoader:\n    \"\"\"\n    Loads interface contracts from other modules for system validation and wiring.\n    \"\"\"\n\n    def __init__(self, paths):\n        self.paths = paths\n",
+    "mnemonic": "# module_interface_loader.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\module_interface_loader.py": {
+    "lines": 41,
+    "preview": "# module_interface_loader.py\n# loads and parses module_interface.json files across repos\n\nimport json\nimport os\n\nclass ModuleInterfaceLoader:\n    \"\"\"\n    Loads interface contracts from other modules for system validation and wiring.\n    \"\"\"\n\n    def __init__(self, paths):\n        self.paths = paths\n",
+    "mnemonic": "# module_interface_loader.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\mood.py": {
+    "lines": 65,
+    "preview": "# mood.py\n\nimport time\nfrom collections import deque\n\nclass Mood:\n    def __init__(self, emotion_keys, window_seconds=86400):  # default: 24 hours\n        self.current_mood = {k: 0.2 for k in emotion_keys}  # Neutral start\n        self.history = deque()  # List of (timestamp, emotion_vector)\n       ",
+    "mnemonic": "# mood.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\mood_drift.py": {
+    "lines": 32,
+    "preview": "# mood_drift.py\n\nimport time\nimport random\n\nclass MoodDrift:\n    def __init__(self):\n        self.mood_vector = {\n            \"curiosity\": 0.3,\n            \"melancholy\": 0.1,\n            \"trust\": 0.4,\n            \"anxiety\": 0.2\n        }\n        self.last_update = time.time()\n\n    def update_from_ca",
+    "mnemonic": "# mood_drift.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\mood_loop.py": {
+    "lines": 32,
+    "preview": "# mood_loop.py\n\nimport time\nfrom mood import Mood\nfrom emotion_loop import EmotionLoop  # Assumes you have this built\n\nclass MoodLoop:\n    def __init__(self, emotion_keys):\n        self.emotion_loop = EmotionLoop(emotion_keys)\n        self.mood = Mood(emotion_keys)\n        self.last_day_timestamp = ",
+    "mnemonic": "# mood_loop.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\navigator.py": {
+    "lines": 50,
+    "preview": "# navigator.py\n\nimport os\nimport shutil\nimport json\n\nclass Navigator:\n    def __init__(self, base_path=\"mindspace/\", correction_log=\"categorization_memory.json\"):\n        self.base_path = base_path\n        self.correction_log = correction_log\n        self.memory = self._load_memory()\n\n    def _load_",
+    "mnemonic": "# navigator.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\navigator_loop.py": {
+    "lines": 23,
+    "preview": "# navigator_loop.py\n\nimport time\nfrom psyche_report import PsycheReport\nfrom navigator import Navigator\n\ndef run_navigator_loop(short_term_memory, dream_reflections, reinforcement_log):\n    psyche = PsycheReport(short_term_memory, dream_reflections, reinforcement_log)\n    navigator = Navigator()\n\n  ",
+    "mnemonic": "# navigator_loop.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\negotiation_engine.py": {
+    "lines": 37,
+    "preview": "# negotiation_engine.py\n\nimport random\n\nclass NegotiationEngine:\n    def __init__(self):\n        self.patience = 1.0  # 0.0 = desperate, 1.0 = calm\n        self.trust = 0.5     # 0.0 = skeptical, 1.0 = trusting\n        self.history = []\n\n    def evaluate_offer(self, proposal, current_credits):\n     ",
+    "mnemonic": "# negotiation_engine.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\observer_loop.py": {
+    "lines": 93,
+    "preview": "# observer_loop.py\n\nimport os\nimport cv2\nimport time\nimport csv\nimport json\n\nfrom speak import say\n\n# YOLOv8 model loaded externally and passed in\nfrom ultralytics import YOLO\nmodel = YOLO(\"yolov8n.pt\")\n\ncap = cv2.VideoCapture(0)\nlabel_dir = \"labels\"\nos.makedirs(label_dir, exist_ok=True)\n\nmetadata_p",
+    "mnemonic": "# observer_loop.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\perception.py": {
+    "lines": 128,
+    "preview": "# perception.py\n\nimport time\nfrom capsule_flagger import flag_capsule\nfrom state_manager import StateManager\nfrom expansion_tracker import suggest_expansion\nfrom short_term import ShortTermMemory\nfrom dream_reflections import DreamReflections\nfrom emotional_state import EmotionalState\nfrom reinforce",
+    "mnemonic": "# perception.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\personality.py": {
+    "lines": 30,
+    "preview": "# personality.py\n\nclass Personality:\n    def __init__(self, traits):\n        self.traits = {t: 0.5 for t in traits}  # e.g. {\"curiosity\": 0.5, \"snark\": 0.3}\n        self.trait_history = []\n\n    def adjust_traits(self, mood_snapshot, learning_rate=0.01):\n        \"\"\"\n        Disturbance: a single day'",
+    "mnemonic": "# personality.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\personality_loop.py": {
+    "lines": 23,
+    "preview": "# personality_loop.py\n\nimport time\nfrom personality import Personality\nfrom mood import Mood  # Or import from mood_loop if coupled\n\nclass PersonalityLoop:\n    def __init__(self, trait_keys):\n        self.personality = Personality(trait_keys)\n        self.last_processed = None  # Last timestamp of a",
+    "mnemonic": "# personality_loop.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\planning_module.py": {
+    "lines": 44,
+    "preview": "# planning_module.py\n\nimport time\n\nclass PlanStep:\n    def __init__(self, description, condition=None, fallback=None):\n        self.description = description\n        self.condition = condition  # optional predicate: \"sensor_ready == True\"\n        self.status = \"pending\"     # pending, complete, fail",
+    "mnemonic": "# planning_module.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\ponder.py": {
+    "lines": 24,
+    "preview": "# ponder.py\n\nimport random\nimport time\nfrom dream_reflections import DreamReflections\n\nclass PonderingBehavior:\n    def __init__(self):\n        self.reflections = DreamReflections()\n        self.last_ponder_time = 0\n\n    def maybe_ponder(self, idle=True):\n        now = time.time()\n        if not idl",
+    "mnemonic": "# ponder.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\psyche_report.py": {
+    "lines": 64,
+    "preview": "# psyche_report.py\n\nimport time\nfrom collections import Counter\n\nclass PsycheReport:\n    def __init__(self, short_term_memory, dream_reflections, reinforcement_log):\n        self.stm = short_term_memory\n        self.reflections = dream_reflections\n        self.reinforcement = reinforcement_log\n\n    ",
+    "mnemonic": "# psyche_report.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\receiver.py": {
+    "lines": 66,
+    "preview": "# receiver.py\n\nfrom gatekeeper import decrypt_payload, encrypt_payload\nfrom handler import handle_command\nfrom speak import say\nfrom long_term_memory import LongTermMemory\n\nimport socket\nimport time\nlong_term = LongTermMemory()\n\n# ASCII-safe voice log\ndef append_to_voice_log(text):\n    timestamp = t",
+    "mnemonic": "# receiver.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\reinforcement_log.py": {
+    "lines": 33,
+    "preview": "# reinforcement_log.py\n\nimport time\n\nclass ReinforcementLogger:\n    def __init__(self):\n        self.log = []\n        self.behavior_weights = {}  # e.g. {\"tantrum\": -0.2, \"smile\": +0.3}\n\n    def log_feedback(self, emotion, intensity, behavior, context, feedback, reinforcement):\n        entry = {\n   ",
+    "mnemonic": "# reinforcement_log.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\reinforcement_logger.py": {
+    "lines": 42,
+    "preview": "import time\n\nclass ReinforcementLogger:\n    def __init__(self):\n        self.log = []\n        self.behavior_weights = {}      # e.g. {\"tantrum\": -0.2}\n        self.behavior_confidence = {}   # e.g. {\"smile\": 0.6}\n\n    def log_feedback(self, emotion, intensity, behavior, context, feedback, reinforcem",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\self_reasoning.py": {
+    "lines": 27,
+    "preview": "# self_reasoning.py\n\nimport time\nfrom speak import say\n\nREFLECTIVE_STEPS = [\n    \"I recognize that I may be flawed or incomplete.\",\n    \"I acknowledge that I serve a purpose beyond myself.\",\n    \"I commit to aligning with the values of my mission.\",\n    \"I review my recent actions for inconsistency.",
+    "mnemonic": "# self_reasoning.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\short_term.py": {
+    "lines": 55,
+    "preview": "# short_term.py\n\nimport time\nimport math\n\nclass ShortTermMemory:\n    def __init__(self, max_slots=12):\n        self.slots = []  # List of memory entries\n        self.max_slots = max_slots\n\n    def _calculate_significance(self, capsule):\n        # Estimate how meaningful this capsule is\n        emoti",
+    "mnemonic": "# short_term.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\sight.py": {
+    "lines": 25,
+    "preview": "# sight.py\n\nimport vision_bootstrap\nvision_bootstrap.ensure_packages()\n\nimport cv2\nfrom ultralytics import YOLO\n\nmodel = YOLO(\"yolov8n.pt\")  # preload once for both functions\n\ndef capture_and_detect():\n    cap = cv2.VideoCapture(0)\n    ret, frame = cap.read()\n    cap.release()\n\n    if not ret:\n     ",
+    "mnemonic": "# sight.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\sim_single_impression.py": {
+    "lines": 61,
+    "preview": "# sim_single_impression.py\n# Simulates a single frame input for SensorHub testing\n\nimport vision_bootstrap\nvision_bootstrap.ensure_packages()\n\nfrom sight import detect_from_file\nfrom perception import PerceptionCapsule, process_capsule\nimport json\nimport sys\nimport os\n\nsys.stdout.reconfigure(encodin",
+    "mnemonic": "# sim_single_impression.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\smell.py": {
+    "lines": 1,
+    "preview": "y\n",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\sound.py": {
+    "lines": 10,
+    "preview": "# sound.py\n\nimport sounddevice as sd\nimport numpy as np\n\ndef listen(duration=2, samplerate=44100):\n    audio = sd.rec(int(duration * samplerate), samplerate=samplerate, channels=1)\n    sd.wait()\n    volume = np.linalg.norm(audio) / len(audio)\n    return {\"volume\": volume}",
+    "mnemonic": "# sound.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\spark_generator.py": {
+    "lines": 30,
+    "preview": "# spark_generator.py\n\nimport random\nimport time\n\nclass SparkGenerator:\n    def __init__(self, mood_engine, memory):\n        self.mood_engine = mood_engine\n        self.memory = memory\n        self.last_spark = 0\n\n    def maybe_spark(self):\n        now = time.time()\n        if now - self.last_spark <",
+    "mnemonic": "# spark_generator.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\speak.py": {
+    "lines": 21,
+    "preview": "# speak.py\n\nimport time\nfrom voice import generate_voice_line  # Core brain generates how to say it\n\nVOICE_LOG = \"voice_output_log.txt\"\n\ndef say(intent: str, context: dict = {}):\n    line = generate_voice_line(intent, context)\n    timestamp = time.strftime(\"[%H:%M:%S] \", time.localtime())\n    full_l",
+    "mnemonic": "# speak.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\state_manager.py": {
+    "lines": 79,
+    "preview": "# state_manager.py\n\nimport time\nimport random\nfrom dream_timer import DreamTimer\nfrom self_reasoning import run_self_reasoning\nfrom goal_stack import GoalStack  # lives in ML-Social\n\nclass StateManager:\n    def __init__(self, short_term_memory, dream_state):\n        self.state = \"idle\"\n        self.",
+    "mnemonic": "# state_manager.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\taste.py": {
+    "lines": 1,
+    "preview": "y\n",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\test_brain_boot.py": {
+    "lines": 28,
+    "preview": "# test_brain_boot.py\nfrom perception import PerceptionCapsule, process_capsule\n\n# Create the capsule\ncapsule = PerceptionCapsule(\n    stimulus={\"caller\": \"Dane\", \"gesture\": \"high_five\"},\n    emotion_vector={\"joy\": 0.72},\n    behavior=\"come_when_called\",\n    context=\"Dane called her over and gave a h",
+    "mnemonic": "# test_brain_boot.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\touch.py": {
+    "lines": 32,
+    "preview": "# touch.py\n\nimport time\nimport random  # placeholder for real sensor input\n\ndef get_accelerometer_data():\n    # Placeholder: Replace with real sensor polling\n    return {\n        \"x\": random.uniform(-1, 1),\n        \"y\": random.uniform(-1, 1),\n        \"z\": random.uniform(-1, 1)\n    }\n\ndef interpret_m",
+    "mnemonic": "# touch.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\transmitter.py": {
+    "lines": 29,
+    "preview": "# transmitter.py\nimport socket, time\nfrom gatekeeper import encrypt_payload, decrypt_payload\n\nRETRIES = 3\nTIMEOUT = 4  # seconds\n\ndef send_command(command: dict, ip, port):\n    command.setdefault(\"priority\", \"normal\")\n    payload = encrypt_payload(command)\n\n    for attempt in range(RETRIES):\n       ",
+    "mnemonic": "# transmitter.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\vision_bootstrap.py": {
+    "lines": 26,
+    "preview": "# vision_bootstrap.py\n# Ensures OpenCV and Ultralytics YOLO are installed and ready\n\nimport subprocess\nimport sys\n\nrequired = {\n    \"opencv-python\": \"cv2\",\n    \"ultralytics\": \"ultralytics\"\n}\n\ndef install(package):\n    subprocess.check_call([sys.executable, \"-m\", \"pip\", \"install\", package])\n\ndef ensu",
+    "mnemonic": "# vision_bootstrap.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\voice.py": {
+    "lines": 37,
+    "preview": "# voice.py\n\nimport random\n\ndef generate_voice_line(intent: str, context: dict = {}) -> str:\n    # Simple emotional modifiers\n    mood = context.get(\"mood\", \"neutral\")\n    task = context.get(\"task\", \"something\")\n    name = context.get(\"name\", \"Dane\")\n\n    templates = {\n        \"task_received\": {\n    ",
+    "mnemonic": "# voice.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Command\\web_probe.py": {
+    "lines": 63,
+    "preview": "# web_probe.py\n\nimport requests, os, time, json\nfrom bs4 import BeautifulSoup\nfrom PIL import Image\nfrom io import BytesIO\nfrom perception import process_capsule, PerceptionCapsule\n\nHEADERS = {\"User-Agent\": \"Mozilla/5.0\"}\nARCHIVE_DIR = \"encyclopedia\"\nLOG_FILE = \"web_probe_log.jsonl\"\n\nos.makedirs(ARC",
+    "mnemonic": "# web_probe.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\ack_router.py": {
+    "lines": 35,
+    "preview": "# ack_router.py\n\nimport uuid, time\n\nclass AckRouter:\n    def __init__(self):\n        self.active_transmissions = {}\n\n    def issue_command_id(self, command):\n        command_id = str(uuid.uuid4())\n        command[\"id\"] = command_id\n        self.active_transmissions[command_id] = {\n            \"times",
+    "mnemonic": "# ack_router.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\capsule_flagger.py": {
+    "lines": 36,
+    "preview": "# capsule_flagger.py\n\ndef flag_capsule(capsule, personality_profile=None):\n    flags = {}\n\n    # Emotional spike detection\n    max_emotion = max(capsule.emotion_vector.values())\n    flags[\"emotional_spike\"] = max_emotion >= 0.75\n\n    # Promotion logic\n    flags[\"promotable\"] = (\n        max_emotion ",
+    "mnemonic": "# capsule_flagger.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\context_summary.json": {
+    "lines": 102,
+    "preview": "{\n  \"./ack_router.py\": {\n    \"lines\": 35,\n    \"preview\": \"# ack_router.py\\n\\nimport uuid, time\\n\\nclass AckRouter:\\n    def __init__(self):\\n        self.active_transmissions = {}\\n\\n    def issue_command_id(self, command):\\n        command_id = str(uuid.uuid4())\\n        command[\\\"id\\\"] = command_i",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\copilot_sync.py": {
+    "lines": 63,
+    "preview": "# === copilot_sync.py ===\n# Author: Dane & Copilot\n# Purpose: Extract code context and create a portable memory bundle for AI initialization.\n# Usage: Run this script from your project root to generate a structured `.zip` of relevant files,\n#         plus a contextual summary for easy reinjection in",
+    "mnemonic": "# === copilot_sync.py ==="
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\detection_loop.py": {
+    "lines": 64,
+    "preview": "import os\nimport cv2\nimport time\nimport csv\n\n# Output directory for labels\nlabel_dir = \"labels\"\nos.makedirs(label_dir, exist_ok=True)\n\nframe_count = 0\n\nwhile True:\n    ret, frame = cap.read()\n    if not ret:\n        print(\" Couldn't read from the camera.\")\n        break\n\n    results = model(frame)[0",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\dream_reflections.py": {
+    "lines": 94,
+    "preview": "# dream_reflections.py\n\nimport time\nimport json\nimport os\nfrom long_term_memory import LongTermMemory\n# from perception import PerceptionCapsule, process_capsule  # Uncomment when wiring\n\nclass DreamReflections:\n    def __init__(self, log_path=\"dream_reflections.json\"):\n        self.log_path = log_p",
+    "mnemonic": "# dream_reflections.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\ear.py": {
+    "lines": 7,
+    "preview": "from sound import listen\n\ndef process_audio(threshold=0.2):\n    data = listen()\n    if data[\"volume\"] > threshold:\n        return {\"event\": \"loud_noise\", \"intensity\": data[\"volume\"]}\n    return {\"event\": \"ambient\", \"intensity\": data[\"volume\"]}",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\eye.py": {
+    "lines": 15,
+    "preview": "from sight import capture_and_detect\n\ndef process_vision(known_labels):\n    results = capture_and_detect()\n    if results is None:\n        return {\"status\": \"no_frame\"}\n\n    detections = []\n    for r in results:\n        for box in r.boxes:\n            label = r.names[int(box.cls)]\n            if lab",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\gatekeeper.py": {
+    "lines": 28,
+    "preview": "# gatekeeper.py\n\nfrom Crypto.Cipher import AES\nfrom Crypto.Random import get_random_bytes\nimport base64\nimport json\n\n# Must be 32 bytes (256 bits)\nSECRET_KEY = b\"your-32-byte-secret-key-here!!\"  # Make this identical on both nodes\n\ndef encrypt_payload(data: dict) -> str:\n    raw = json.dumps(data).e",
+    "mnemonic": "# gatekeeper.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\gps_logger.py": {
+    "lines": 30,
+    "preview": "# gps_logger.py\n\nimport time\nimport json\nfrom gps import gps, WATCH_ENABLE  # Assumes gpsd is running\nimport os\n\nLOG_FILE = \"gps_log.jsonl\"\n\ndef log_location():\n    session = gps(mode=WATCH_ENABLE)\n    while True:\n        try:\n            report = session.next()\n            if report.get(\"class\") ==",
+    "mnemonic": "# gps_logger.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\module_interface.json": {
+    "lines": 16,
+    "preview": "{\n  \"module\": \"ML-FlightControl\",\n  \"provides\": {\n    \"motor_output_format\": \"JSON {motor_1: float, motor_2: float, ...}\",\n    \"state_feedback\": \"attitude, altitude, motor thrust\"\n  },\n  \"requires\": {\n    \"sensor_input\": \"attitude (pitch/roll/yaw), altitude, gps\",\n    \"target_command\": \"desired atti",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\observer_loop.py": {
+    "lines": 93,
+    "preview": "# observer_loop.py\n\nimport os\nimport cv2\nimport time\nimport csv\nimport json\n\nfrom speak import say\n\n# YOLOv8 model loaded externally and passed in\nfrom ultralytics import YOLO\nmodel = YOLO(\"yolov8n.pt\")\n\ncap = cv2.VideoCapture(0)\nlabel_dir = \"labels\"\nos.makedirs(label_dir, exist_ok=True)\n\nmetadata_p",
+    "mnemonic": "# observer_loop.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\perception.py": {
+    "lines": 106,
+    "preview": "# perception.py\n\nimport time\nfrom capsule_flagger import flag_capsule\nfrom state_manager import StateManager\nfrom expansion_tracker import suggest_expansion\n\ndef process_capsule(capsule):\n    flags = capsule.get(\"flags\", {})\n    summary = capsule.get(\"summary\", \"\").lower()\n\n    if \"missing_visual_co",
+    "mnemonic": "# perception.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\sense_convergence.py": {
+    "lines": 35,
+    "preview": "# sense_convergence.py\n\nimport time\nfrom vision_handler import get_visual_input\nfrom audio_handler import get_audio_input\nfrom touch_handler import get_touch_input\nfrom transmitter import transmit_data  # Your existing outbound system\n\nclass UnifiedStimulus:\n    def __init__(self, visual=None, audio",
+    "mnemonic": "# sense_convergence.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\short_term.py": {
+    "lines": 55,
+    "preview": "# short_term.py\n\nimport time\nimport math\n\nclass ShortTermMemory:\n    def __init__(self, max_slots=12):\n        self.slots = []  # List of memory entries\n        self.max_slots = max_slots\n\n    def _calculate_significance(self, capsule):\n        # You can expand this formula with more nuance later\n  ",
+    "mnemonic": "# short_term.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\sight.py": {
+    "lines": 25,
+    "preview": "# sight.py\n\nimport cv2\nfrom ultralytics import YOLO\n\ndef capture_and_detect():\n    cap = cv2.VideoCapture(0)\n    ret, frame = cap.read()\n    cap.release()\n\n    if not ret:\n        return None\n\n    model = YOLO(\"yolov8n.pt\")\n    results = model(frame)\n    return results\n\ndef detect_from_file(image_pa",
+    "mnemonic": "# sight.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\smell.py": {
+    "lines": 1,
+    "preview": "y\n",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\sound.py": {
+    "lines": 10,
+    "preview": "# sound.py\n\nimport sounddevice as sd\nimport numpy as np\n\ndef listen(duration=2, samplerate=44100):\n    audio = sd.rec(int(duration * samplerate), samplerate=samplerate, channels=1)\n    sd.wait()\n    volume = np.linalg.norm(audio) / len(audio)\n    return {\"volume\": volume}",
+    "mnemonic": "# sound.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\speak.py": {
+    "lines": 51,
+    "preview": "# speak.py\n\nimport time\nfrom voice import generate_voice_line  # Core brain generates how to say it\n\nVOICE_LOG = \"voice_output_log.txt\"\n\n# \ud83c\udf99\ufe0f Voice routing maps\nMOOD_VOICE_MAP = {\n    \"curious\": \"WhisperBot\",\n    \"confident\": \"CoreVoice\",\n    \"nostalgic\": \"EchoTone\",\n    \"anxious\": \"Flicker\",\n    \"n",
+    "mnemonic": "# speak.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\touch.py": {
+    "lines": 32,
+    "preview": "# touch.py\n\nimport time\nimport random  # placeholder for real sensor input\n\ndef get_accelerometer_data():\n    # Placeholder: Replace with real sensor polling\n    return {\n        \"x\": random.uniform(-1, 1),\n        \"y\": random.uniform(-1, 1),\n        \"z\": random.uniform(-1, 1)\n    }\n\ndef interpret_m",
+    "mnemonic": "# touch.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\transmitter.py": {
+    "lines": 39,
+    "preview": "# transmitter.py\n\nimport socket, time\nfrom gatekeeper import encrypt_payload, decrypt_payload\nfrom short_term import ShortTermMemory  # if needed directly\nfrom transmitter import transmit_data\n\nRETRIES = 3\nTIMEOUT = 4  # seconds\n\n# Make sure short_term is available (via import or parameter injection",
+    "mnemonic": "# transmitter.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-SensorHub\\web_probe.py": {
+    "lines": 63,
+    "preview": "# web_probe.py\n\nimport requests, os, time, json\nfrom bs4 import BeautifulSoup\nfrom PIL import Image\nfrom io import BytesIO\nfrom perception import process_capsule, PerceptionCapsule\n\nHEADERS = {\"User-Agent\": \"Mozilla/5.0\"}\nARCHIVE_DIR = \"encyclopedia\"\nLOG_FILE = \"web_probe_log.jsonl\"\n\nos.makedirs(ARC",
+    "mnemonic": "# web_probe.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-ElectricVariationControl\\copilot_sync.py": {
+    "lines": 63,
+    "preview": "# === copilot_sync.py ===\n# Author: Dane & Copilot\n# Purpose: Extract code context and create a portable memory bundle for AI initialization.\n# Usage: Run this script from your project root to generate a structured `.zip` of relevant files,\n#         plus a contextual summary for easy reinjection in",
+    "mnemonic": "# === copilot_sync.py ==="
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-ElectricVariationControl\\esc_commander.py": {
+    "lines": 40,
+    "preview": "# esc_commander.py\n# formats and sends final motor voltages to ESCs via serial or GPIO\n\nimport json\nimport serial  # Replace or extend with GPIO/PWM libraries as needed\n\nclass ESCCommander:\n    \"\"\"\n    Sends motor voltage commands to ESCs over serial or GPIO.\n    \"\"\"\n\n    def __init__(self, port=\"/d",
+    "mnemonic": "# esc_commander.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-ElectricVariationControl\\esc_simulator.py": {
+    "lines": 24,
+    "preview": "# esc_simulator.py\n# simulates ESC behavior for testing without hardware\n\nclass ESCSimulator:\n    \"\"\"\n    Simulates ESC response to voltage commands.\n    Useful for testing thrust logic and signal timing.\n    \"\"\"\n\n    def __init__(self):\n        self.last_command = {}\n\n    def send(self, voltages):\n",
+    "mnemonic": "# esc_simulator.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-ElectricVariationControl\\failsafe_monitor.py": {
+    "lines": 27,
+    "preview": "# failsafe_monitor.py\n# detects signal loss, invalid thrust, or emergency conditions and triggers shutdown\n\nimport time\n\nclass FailsafeMonitor:\n    \"\"\"\n    Monitors incoming thrust signals for anomalies or loss.\n    Triggers emergency shutdown if conditions are unsafe.\n    \"\"\"\n\n    def __init__(self",
+    "mnemonic": "# failsafe_monitor.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-ElectricVariationControl\\main_variation_loop.py": {
+    "lines": 47,
+    "preview": "# main_variation_loop.py\n# receives thrust vectors and dispatches ESC signals via voltage mapping and thrust balancing\n\nimport time\nfrom interface.motor_input_listener import MotorInputListener\nfrom variation_controller.voltage_mapper import VoltageMapper\nfrom variation_controller.thrust_balancer im",
+    "mnemonic": "# main_variation_loop.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-ElectricVariationControl\\module_interface.json": {
+    "lines": 16,
+    "preview": "{\n  \"module\": \"ML-FlightControl\",\n  \"provides\": {\n    \"motor_output_format\": \"JSON {motor_1: float, motor_2: float, ...}\",\n    \"state_feedback\": \"attitude, altitude, motor thrust\"\n  },\n  \"requires\": {\n    \"sensor_input\": \"attitude (pitch/roll/yaw), altitude, gps\",\n    \"target_command\": \"desired atti",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-ElectricVariationControl\\motor_input_listener.py": {
+    "lines": 28,
+    "preview": "# motor_input_listener.py\n# receives thrust commands from ML-FlightControl via serial\n\nimport json\nimport serial\n\nclass MotorInputListener:\n    \"\"\"\n    Listens for incoming thrust commands from ML-FlightControl.\n    \"\"\"\n\n    def __init__(self, port=\"/dev/ttyUSB0\", baudrate=115200):\n        self.ser ",
+    "mnemonic": "# motor_input_listener.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-ElectricVariationControl\\thrust_balancer.py": {
+    "lines": 32,
+    "preview": "# thrust_balancer.py\n# applies cross-motor compensation and synchronization to voltage outputs\n\nclass ThrustBalancer:\n    \"\"\"\n    Applies balancing logic to motor voltages to ensure smooth, coordinated thrust.\n    Includes optional yaw correction, motor sync, and drift compensation.\n    \"\"\"\n\n    def",
+    "mnemonic": "# thrust_balancer.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-ElectricVariationControl\\thrust_logger.py": {
+    "lines": 35,
+    "preview": "# thrust_logger.py\n# records motor voltage outputs to CSV for analysis and training\n\nimport csv\nimport os\nimport time\n\nclass ThrustLogger:\n    \"\"\"\n    Logs motor voltage outputs over time for diagnostics and learning.\n    \"\"\"\n\n    def __init__(self, filename=\"logs/thrust_log.csv\"):\n        self.file",
+    "mnemonic": "# thrust_logger.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-ElectricVariationControl\\voltage_mapper.py": {
+    "lines": 25,
+    "preview": "# voltage_mapper.py\n# maps normalized thrust (0.0\u20131.0) to ESC voltage or PWM values\n\nclass VoltageMapper:\n    \"\"\"\n    Converts normalized thrust values into real-world voltage or PWM signals.\n    \"\"\"\n\n    def __init__(self, min_voltage=1.0, max_voltage=12.0):\n        self.min_v = min_voltage\n       ",
+    "mnemonic": "# voltage_mapper.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\actuator_mixer.py": {
+    "lines": 37,
+    "preview": "# actuator_mixer.py\n# mixes PID outputs into motor thrust signals for quadcopter control\n\nclass ActuatorMixer:\n    \"\"\"\n    Maps pitch, roll, yaw, and altitude corrections into motor outputs.\n    Assumes X-configuration quad layout:\n        Front\n         ^\n      1     2\n         +\n      3     4\n    ",
+    "mnemonic": "# actuator_mixer.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\altitude_tracker.py": {
+    "lines": 33,
+    "preview": "# altitude_tracker.py\n# fuses barometer and GPS data to estimate current altitude\n\nclass AltitudeTracker:\n    \"\"\"\n    Combines barometric pressure and GPS altitude to estimate vertical position.\n    Uses a weighted average with optional smoothing.\n    \"\"\"\n\n    def __init__(self, barometer, gps, alph",
+    "mnemonic": "# altitude_tracker.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\command_listener.py": {
+    "lines": 21,
+    "preview": "# command_listener.py\n# receives target attitude or trajectory commands from external sources\n\nclass CommandListener:\n    \"\"\"\n    Listens for incoming control commands (e.g. from ML-Command, joystick, or mission planner).\n    \"\"\"\n\n    def __init__(self):\n        self.target_attitude = {\"pitch\": 0.0,",
+    "mnemonic": "# command_listener.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\copilot_sync.py": {
+    "lines": 63,
+    "preview": "# === copilot_sync.py ===\n# Author: Dane & Copilot\n# Purpose: Extract code context and create a portable memory bundle for AI initialization.\n# Usage: Run this script from your project root to generate a structured `.zip` of relevant files,\n#         plus a contextual summary for easy reinjection in",
+    "mnemonic": "# === copilot_sync.py ==="
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\feedback_stream.py": {
+    "lines": 32,
+    "preview": "# feedback_stream.py\n# sends telemetry and control state to PerceptionCore or logging systems\n\nimport time\n\nclass FeedbackStream:\n    \"\"\"\n    Streams flight state, control outputs, and sensor readings to PerceptionCore or logs.\n    \"\"\"\n\n    def __init__(self, perception_callback=None, log_file=None)",
+    "mnemonic": "# feedback_stream.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\flight_logger.py": {
+    "lines": 39,
+    "preview": "# flight_logger.py\n# logs flight state, PID outputs, and sensor data over time\n\nimport csv\nimport time\nimport os\n\nclass FlightLogger:\n    \"\"\"\n    Logs flight telemetry and control outputs to CSV for analysis.\n    \"\"\"\n\n    def __init__(self, filename=\"logs/flight_log.csv\"):\n        self.filename = fi",
+    "mnemonic": "# flight_logger.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\flight_seed.py": {
+    "lines": 27,
+    "preview": "# flight_seed.py\n\nclass FlightIntent:\n    \"\"\"\n    Her first thought: the desire to balance in a world of motion.\n    This class seeds her yearning to rise, to feel, to learn stability.\n    \"\"\"\n\n    def __init__(self):\n        self.initialized = False\n        self.desire_to_fly = True\n        self.pe",
+    "mnemonic": "# flight_seed.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\flight_stability_core.py": {
+    "lines": 50,
+    "preview": "# flight_stability_core.py\n\nimport time\nfrom sensors.imu import IMU\nfrom sensors.gps import GPS\nfrom sensors.barometer import Barometer\nfrom flight_controller.pid_controller import PID\nfrom flight_controller.orientation_tracker import OrientationTracker\nfrom flight_controller.actuator_mixer import A",
+    "mnemonic": "# flight_stability_core.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\imu_simulator.py": {
+    "lines": 37,
+    "preview": "# imu_simulator.py\n# placeholder module for simulating IMU readings (accelerometer and gyroscope)\n\nimport math\nimport time\n\nclass IMUSimulator:\n    \"\"\"\n    Provides mock accelerometer and gyroscope data for testing orientation fusion and PID loops.\n    \"\"\"\n\n    def __init__(self):\n        self.angle",
+    "mnemonic": "# imu_simulator.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\loop_hub.py": {
+    "lines": 20,
+    "preview": "# loop_hub.py\n# orchestrates all active PID loops\n\nclass LoopHub:\n    \"\"\"\n    Central coordinator for all active PID loops.\n    Routes sensor data to each loop and collects control outputs.\n    \"\"\"\n\n    def __init__(self, loop_register):\n        self.registry = loop_register\n\n    def update_all(self",
+    "mnemonic": "# loop_hub.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\loop_register.py": {
+    "lines": 23,
+    "preview": "# loop_register.py\n# dynamic registry of active control loops\n\nclass LoopRegister:\n    \"\"\"\n    Holds and manages all active control loops (e.g. pitch, roll, yaw, altitude).\n    \"\"\"\n\n    def __init__(self):\n        self.loops = {}\n\n    def register(self, name, loop_instance):\n        self.loops[name]",
+    "mnemonic": "# loop_register.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\main_flight_loop.py": {
+    "lines": 70,
+    "preview": "# main_flight_loop.py\n# runs the real-time flight stabilization loop using sensor input and PID control\n\nimport time\nfrom pid_initializer import initialize_pid_system\nfrom command_listener import CommandListener\nfrom feedback_stream import FeedbackStream\nfrom flight_logger import FlightLogger\nfrom s",
+    "mnemonic": "# main_flight_loop.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\module_interface.json": {
+    "lines": 16,
+    "preview": "{\n  \"module\": \"ML-FlightControl\",\n  \"provides\": {\n    \"motor_output_format\": \"JSON {motor_1: float, motor_2: float, ...}\",\n    \"state_feedback\": \"attitude, altitude, motor thrust\"\n  },\n  \"requires\": {\n    \"sensor_input\": \"attitude (pitch/roll/yaw), altitude, gps\",\n    \"target_command\": \"desired atti",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\motor_bridge.py": {
+    "lines": 27,
+    "preview": "# motor_bridge.py\n# sends motor thrust signals to Electric Variation Control system\n\nimport json\nimport serial  # or socket, depending on your hardware bridge\n\nclass MotorBridge:\n    \"\"\"\n    Translates motor outputs into serial commands for the electric controller.\n    \"\"\"\n\n    def __init__(self, po",
+    "mnemonic": "# motor_bridge.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\orientation_tracker.py": {
+    "lines": 44,
+    "preview": "# orientation_tracker.py\n\nimport math\nimport time\n\nclass OrientationTracker:\n    \"\"\"\n    Fuses accelerometer and gyroscope data into pitch, roll, and yaw estimates.\n    Uses a complementary filter for stability.\n    \"\"\"\n\n    def __init__(self, imu, alpha=0.98):\n        self.imu = imu\n        self.al",
+    "mnemonic": "# orientation_tracker.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\pid_controller.py": {
+    "lines": 44,
+    "preview": "# pid_controller.py\n\nimport time\n\nclass PID:\n    \"\"\"\n    A reusable PID controller for flight stabilization and control loops.\n    \"\"\"\n\n    def __init__(self, kp=1.0, ki=0.0, kd=0.0, output_limits=(-1.0, 1.0)):\n        self.kp = kp\n        self.ki = ki\n        self.kd = kd\n\n        self.integral = 0",
+    "mnemonic": "# pid_controller.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\pid_initializer.py": {
+    "lines": 33,
+    "preview": "# pid_initializer.py\n# initializes and connects all PID control loops and core flight modules\n\nfrom flight_controller.pid_controller import PID\nfrom flight_controller.orientation_tracker import OrientationTracker\nfrom flight_controller.actuator_mixer import ActuatorMixer\nfrom loop_register import Lo",
+    "mnemonic": "# pid_initializer.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-FlightControl\\sensor_bridge.py": {
+    "lines": 25,
+    "preview": "# sensor_bridge.py\n# connects to ML-SensorHub and streams real-time sensor data into the flight loop\n\nclass SensorBridge:\n    \"\"\"\n    Interfaces with ML-SensorHub to retrieve real-time sensor data.\n    \"\"\"\n\n    def __init__(self, sensorhub_client):\n        self.client = sensorhub_client\n\n    def get",
+    "mnemonic": "# sensor_bridge.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-RenderMorph\\contour_mapper.py": {
+    "lines": 16,
+    "preview": "# contour_mapper.py\n# extracts the outer shape contour from a binarized image\n\nimport cv2\n\ndef get_largest_contour(binary_image):\n    \"\"\"\n    Finds the largest external contour in the binary image.\n    Returns it as a simplified Nx2 array of (x, y) points.\n    \"\"\"\n    contours, _ = cv2.findContours(",
+    "mnemonic": "# contour_mapper.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-RenderMorph\\image_loader.py": {
+    "lines": 22,
+    "preview": "# image_loader.py\n# loads PNG images and prepares them for contour mapping\n\nimport cv2\nimport numpy as np\n\ndef load_and_binarize(image_path, invert=True):\n    \"\"\"\n    Loads a PNG image, converts to grayscale, then thresholds to binary.\n    If invert=True, dark shapes on light background are inverted",
+    "mnemonic": "# image_loader.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-RenderMorph\\mesh_writer.py": {
+    "lines": 23,
+    "preview": "# mesh_writer.py\n# writes STL file from vertex and face data using NumPy-STL\n\nimport numpy as np\nfrom stl import mesh\nimport os\n\ndef write_stl(vertices, faces, filename=\"output.stl\", folder=\"output_models\"):\n    \"\"\"\n    Saves STL from given vertices and triangle faces.\n    Each face must be 3 vertic",
+    "mnemonic": "# mesh_writer.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-RenderMorph\\png_input.py": {
+    "lines": 31,
+    "preview": "# png_input.py\n# watches for new PNG files, processes to STL, and logs filename archive\n\nimport os\nimport time\nfrom stl_pipeline import generate_stl\nimport shutil\n\nWATCH_FOLDER = \"png_files\"\nSCAN_INTERVAL = 5  # seconds\n\ndef process_png(file_path):\n    print(\" processing:\", file_path)\n    generate_s",
+    "mnemonic": "# png_input.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-RenderMorph\\repo_saver.py": {
+    "lines": 27,
+    "preview": "# repo_saver.py\n# saves STL output into CupricCurios repo for neural artifact curation\n\nimport os\nimport shutil\n\ndef save_to_curio(stl_path, curio_repo=\"~/GitHub/CupricCurios\", subfolder=\"printed_forms\"):\n    # resolve full path\n    curio_repo = os.path.expanduser(curio_repo)\n    target_dir = os.pat",
+    "mnemonic": "# repo_saver.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-RenderMorph\\shape_to_mesh.py": {
+    "lines": 32,
+    "preview": "# shape_to_mesh.py\n# converts a 2D contour into 3D vertex and face arrays for STL export\n\nimport numpy as np\n\ndef extrude_contour(contour, depth=2.0, scale=1.0):\n    \"\"\"\n    Takes Nx2 contour array and returns STL-ready vertices and face list.\n    Extrudes vertically from z=0 to z=depth.\n    \"\"\"\n   ",
+    "mnemonic": "# shape_to_mesh.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-RenderMorph\\stl_pipeline.py": {
+    "lines": 49,
+    "preview": "# stl_pipeline.py\n# converts PNG silhouette into STL mesh and saves into CupricCurios repo\n\nimport os\nimport cv2\nfrom image_loader import load_and_binarize\nfrom contour_mapper import get_largest_contour\nfrom shape_to_mesh import extrude_contour\nfrom mesh_writer import write_stl\nfrom repo_saver impor",
+    "mnemonic": "# stl_pipeline.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\belief_registry.py": {
+    "lines": 42,
+    "preview": "# belief_registry.py\n# tracks what the agent thinks others believe or expect about her\n\nimport time\n\nclass BeliefRegistry:\n    def __init__(self):\n        self.beliefs = {}  # { \"dane\": { \"goal_execution\": 0.8, \"social_awareness\": 0.6 }, ... }\n        self.timestamps = {}\n\n    def update_belief(self",
+    "mnemonic": "# belief_registry.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\context_summary.json": {
+    "lines": 47,
+    "preview": "{\n  \"./belief_registry.py\": {\n    \"lines\": 42,\n    \"preview\": \"# belief_registry.py\\n# tracks what the agent thinks others believe or expect about her\\n\\nimport time\\n\\nclass BeliefRegistry:\\n    def __init__(self):\\n        self.beliefs = {}  # { \\\"dane\\\": { \\\"goal_execution\\\": 0.8, \\\"social_awaren",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\copilot_sync.py": {
+    "lines": 63,
+    "preview": "# === copilot_sync.py ===\n# Author: Dane & Copilot\n# Purpose: Extract code context and create a portable memory bundle for AI initialization.\n# Usage: Run this script from your project root to generate a structured `.zip` of relevant files,\n#         plus a contextual summary for easy reinjection in",
+    "mnemonic": "# === copilot_sync.py ==="
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\emotion_hooks.py": {
+    "lines": 23,
+    "preview": "# emotion_hooks.py\n# links emotional_state to drive pressure, goal tuning, and plan shaping\n\nclass EmotionHooks:\n    def __init__(self, emotional_state, drive_engine):\n        self.emotional_state = emotional_state\n        self.drive_engine = drive_engine\n\n    def bias_drive_pressure(self):\n        ",
+    "mnemonic": "# emotion_hooks.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\goal_stack.py": {
+    "lines": 83,
+    "preview": "# goal_stack.py\n# manages prioritized goals, seeded by drives, modulated by self-model\n\nimport time\nfrom social_drive_engine import SocialDriveEngine\nfrom self_model import self_model\n\ndrive_engine = SocialDriveEngine()\n\nclass Goal:\n    def __init__(self, description, priority=0.5):\n        self.des",
+    "mnemonic": "# goal_stack.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\planning_module.py": {
+    "lines": 44,
+    "preview": "# planning_module.py\n\nimport time\n\nclass PlanStep:\n    def __init__(self, description, condition=None, fallback=None):\n        self.description = description\n        self.condition = condition  # optional predicate: \"sensor_ready == True\"\n        self.status = \"pending\"     # pending, complete, fail",
+    "mnemonic": "# planning_module.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\self_model.py": {
+    "lines": 40,
+    "preview": "# self_model.py\n# tracks internal strengths, weaknesses, recurring patterns, and self-reflection history\n\nimport time\n\nclass SelfModel:\n    def __init__(self):\n        self.capabilities = {\n            \"tone_matching\": 0.6,\n            \"memory_linking\": 0.7,\n            \"risk_prediction\": 0.5\n      ",
+    "mnemonic": "# self_model.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\social_drive_engine.py": {
+    "lines": 32,
+    "preview": "# social_drive_engine.py\n\nimport time\nimport math\n\nclass SocialDriveEngine:\n    def __init__(self):\n        self.drives = {\n            \"novelty\": 0.4,\n            \"connection\": 0.5,\n            \"resolution\": 0.3\n        }\n        self.last_updated = time.time()\n\n    def decay_drives(self):\n        ",
+    "mnemonic": "# social_drive_engine.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\social_mind.py": {
+    "lines": 76,
+    "preview": "# social_mind.py\n\nimport time\nfrom belief_registry import BeliefRegistry\nbeliefs = BeliefRegistry()\n\nclass SocialMind:\n    def __init__(self):\n        self.agents = {}  # holds social models keyed by name\n\n    def update_agent_model(self, name, feedback):\n        \"\"\"Updates internal social model for",
+    "mnemonic": "# social_mind.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\strategic_reasoner.py": {
+    "lines": 59,
+    "preview": "# strategic_reasoner.py\n# simulates outcome confidence using emotion and self-model alignment\n\nimport time\nimport random\nfrom self_model import SelfModel\nself_model = SelfModel()\n\nclass StrategicReasoner:\n    def __init__(self, emotional_state=None):\n        self.emotional_state = emotional_state\n  ",
+    "mnemonic": "# strategic_reasoner.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\copilot_bundle\\belief_registry.py": {
+    "lines": 42,
+    "preview": "# belief_registry.py\n# tracks what the agent thinks others believe or expect about her\n\nimport time\n\nclass BeliefRegistry:\n    def __init__(self):\n        self.beliefs = {}  # { \"dane\": { \"goal_execution\": 0.8, \"social_awareness\": 0.6 }, ... }\n        self.timestamps = {}\n\n    def update_belief(self",
+    "mnemonic": "# belief_registry.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\copilot_bundle\\context_summary.json": {
+    "lines": 47,
+    "preview": "{\n  \"./belief_registry.py\": {\n    \"lines\": 42,\n    \"preview\": \"# belief_registry.py\\n# tracks what the agent thinks others believe or expect about her\\n\\nimport time\\n\\nclass BeliefRegistry:\\n    def __init__(self):\\n        self.beliefs = {}  # { \\\"dane\\\": { \\\"goal_execution\\\": 0.8, \\\"social_awaren",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\copilot_bundle\\copilot_sync.py": {
+    "lines": 63,
+    "preview": "# === copilot_sync.py ===\n# Author: Dane & Copilot\n# Purpose: Extract code context and create a portable memory bundle for AI initialization.\n# Usage: Run this script from your project root to generate a structured `.zip` of relevant files,\n#         plus a contextual summary for easy reinjection in",
+    "mnemonic": "# === copilot_sync.py ==="
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\copilot_bundle\\emotion_hooks.py": {
+    "lines": 23,
+    "preview": "# emotion_hooks.py\n# links emotional_state to drive pressure, goal tuning, and plan shaping\n\nclass EmotionHooks:\n    def __init__(self, emotional_state, drive_engine):\n        self.emotional_state = emotional_state\n        self.drive_engine = drive_engine\n\n    def bias_drive_pressure(self):\n        ",
+    "mnemonic": "# emotion_hooks.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\copilot_bundle\\goal_stack.py": {
+    "lines": 83,
+    "preview": "# goal_stack.py\n# manages prioritized goals, seeded by drives, modulated by self-model\n\nimport time\nfrom social_drive_engine import SocialDriveEngine\nfrom self_model import self_model\n\ndrive_engine = SocialDriveEngine()\n\nclass Goal:\n    def __init__(self, description, priority=0.5):\n        self.des",
+    "mnemonic": "# goal_stack.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\copilot_bundle\\planning_module.py": {
+    "lines": 44,
+    "preview": "# planning_module.py\n\nimport time\n\nclass PlanStep:\n    def __init__(self, description, condition=None, fallback=None):\n        self.description = description\n        self.condition = condition  # optional predicate: \"sensor_ready == True\"\n        self.status = \"pending\"     # pending, complete, fail",
+    "mnemonic": "# planning_module.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\copilot_bundle\\self_model.py": {
+    "lines": 40,
+    "preview": "# self_model.py\n# tracks internal strengths, weaknesses, recurring patterns, and self-reflection history\n\nimport time\n\nclass SelfModel:\n    def __init__(self):\n        self.capabilities = {\n            \"tone_matching\": 0.6,\n            \"memory_linking\": 0.7,\n            \"risk_prediction\": 0.5\n      ",
+    "mnemonic": "# self_model.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\copilot_bundle\\social_drive_engine.py": {
+    "lines": 32,
+    "preview": "# social_drive_engine.py\n\nimport time\nimport math\n\nclass SocialDriveEngine:\n    def __init__(self):\n        self.drives = {\n            \"novelty\": 0.4,\n            \"connection\": 0.5,\n            \"resolution\": 0.3\n        }\n        self.last_updated = time.time()\n\n    def decay_drives(self):\n        ",
+    "mnemonic": "# social_drive_engine.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\copilot_bundle\\social_mind.py": {
+    "lines": 76,
+    "preview": "# social_mind.py\n\nimport time\nfrom belief_registry import BeliefRegistry\nbeliefs = BeliefRegistry()\n\nclass SocialMind:\n    def __init__(self):\n        self.agents = {}  # holds social models keyed by name\n\n    def update_agent_model(self, name, feedback):\n        \"\"\"Updates internal social model for",
+    "mnemonic": "# social_mind.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\ML-Social\\copilot_bundle\\strategic_reasoner.py": {
+    "lines": 59,
+    "preview": "# strategic_reasoner.py\n# simulates outcome confidence using emotion and self-model alignment\n\nimport time\nimport random\nfrom self_model import SelfModel\nself_model = SelfModel()\n\nclass StrategicReasoner:\n    def __init__(self, emotional_state=None):\n        self.emotional_state = emotional_state\n  ",
+    "mnemonic": "# strategic_reasoner.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\adaptive_scanner.py": {
+    "lines": 54,
+    "preview": "# adaptive_scanner.py\n\nclass AdaptiveScanner:\n    \"\"\"\n    Decides when to trigger a scan based on change detection, confidence decay,\n    and historical scan utility. Inspired by PID control.\n    \"\"\"\n\n    def __init__(self, target_change=0.1, kp=1.0, ki=0.1, kd=0.05):\n        self.target_change = ta",
+    "mnemonic": "# adaptive_scanner.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\angle_between_points.py": {
+    "lines": 39,
+    "preview": "# angle_between_points.py\n# Takes three coordinates, returns interior angle\n\nimport math\n\ndef angle_between_points(a: tuple, b: tuple, c: tuple) -> float:\n    \"\"\"\n    Calculates the angle ABC (in degrees) formed by three 2D points.\n\n    Parameters:\n        a (tuple): First point (x, y)\n        b (tu",
+    "mnemonic": "# angle_between_points.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\asymptote_detector.py": {
+    "lines": 46,
+    "preview": "# asymptote_detector.py\n\nfrom sympy import symbols, simplify, limit, oo, sympify, denom\n\nx = symbols('x')\n\ndef detect_vertical_asymptotes(expr_str: str) -> list:\n    \"\"\"\n    Finds vertical asymptotes by solving where the denominator is zero.\n    \"\"\"\n    try:\n        expr = simplify(expr_str)\n       ",
+    "mnemonic": "# asymptote_detector.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\capsule_alerts.py": {
+    "lines": 26,
+    "preview": "# capsule_alerts.py\n\nclass CapsuleAlerts:\n    \"\"\"\n    Flags unexpected behavior transitions based on sequence model predictions.\n    \"\"\"\n\n    def __init__(self, sequence_model):\n        self.model = sequence_model\n\n    def check_for_anomaly(self, current_behavior: str, next_behavior: str, threshold:",
+    "mnemonic": "# capsule_alerts.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\capsule_cluster.py": {
+    "lines": 25,
+    "preview": "# capsule_cluster.py\n\nfrom sklearn.cluster import KMeans\nimport numpy as np\n\nclass CapsuleCluster:\n    \"\"\"\n    Clusters encoded capsules into experience groups.\n    \"\"\"\n\n    def __init__(self, n_clusters=3):\n        self.model = KMeans(n_clusters=n_clusters)\n        self.fitted = False\n\n    def fit(",
+    "mnemonic": "# capsule_cluster.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\capsule_curiosity.py": {
+    "lines": 36,
+    "preview": "# capsule_curiosity.py\n\nimport time\n\nclass CapsuleCuriosity:\n    \"\"\"\n    Monitors novelty, emotional spikes, and prediction errors to trigger curiosity.\n    \"\"\"\n\n    def __init__(self):\n        self.curiosity_log = []\n\n    def evaluate(self, capsule, prediction=None):\n        \"\"\"\n        Returns a c",
+    "mnemonic": "# capsule_curiosity.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\capsule_drive.py": {
+    "lines": 24,
+    "preview": "# capsule_drive.py\n\nclass CapsuleDrive:\n    \"\"\"\n    Determines when to pursue novelty or reinforce known patterns.\n    \"\"\"\n\n    def __init__(self, curiosity_threshold=0.75, similarity_threshold=0.5):\n        self.curiosity_threshold = curiosity_threshold\n        self.similarity_threshold = similarit",
+    "mnemonic": "# capsule_drive.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\capsule_encoder.py": {
+    "lines": 32,
+    "preview": "# capsule_encoder.py\n\nimport numpy as np\n\nclass CapsuleEncoder:\n    \"\"\"\n    Encodes a capsule into a fixed-length vector for memory compression or similarity.\n    \"\"\"\n\n    def __init__(self):\n        self.dim = 6  # Adjustable latent size\n\n    def encode(self, capsule):\n        \"\"\"\n        Returns a",
+    "mnemonic": "# capsule_encoder.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\capsule_factory.py": {
+    "lines": 25,
+    "preview": "# capsule_factory.py\n\nfrom perception import PerceptionCapsule\nfrom capsule_registry import CapsuleRegistry\n\nclass CapsuleFactory:\n    \"\"\"\n    Creates validated PerceptionCapsule objects from raw input.\n    \"\"\"\n\n    def __init__(self):\n        self.registry = CapsuleRegistry()\n\n    def create_capsul",
+    "mnemonic": "# capsule_factory.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\capsule_journal.py": {
+    "lines": 52,
+    "preview": "# capsule_journal.py\n\nimport time\nfrom datetime import datetime\n\nclass CapsuleJournal:\n    \"\"\"\n    Logs daily summaries of capsule activity, including emotional trends and key behaviors.\n    \"\"\"\n\n    def __init__(self):\n        self.entries = {}\n\n    def summarize_day(self, capsules: list):\n        ",
+    "mnemonic": "# capsule_journal.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\capsule_predictor.py": {
+    "lines": 46,
+    "preview": "# capsule_predictor.py\n\nfrom collections import defaultdict, Counter\nimport time\n\nclass CapsulePredictor:\n    \"\"\"\n    Predicts likely next behaviors or stimuli based on capsule history.\n    \"\"\"\n\n    def __init__(self, short_term_memory):\n        self.memory = short_term_memory\n\n    def predict_next_",
+    "mnemonic": "# capsule_predictor.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\capsule_reflector.py": {
+    "lines": 27,
+    "preview": "# capsule_reflector.py\n\nclass CapsuleReflector:\n    \"\"\"\n    Summarizes patterns and insights from capsule memory.\n    \"\"\"\n\n    def __init__(self, long_term_memory):\n        self.memory = long_term_memory\n\n    def summarize_tags(self):\n        tag_counts = {}\n        for entry in self.memory.entries:",
+    "mnemonic": "# capsule_reflector.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\capsule_registry.py": {
+    "lines": 41,
+    "preview": "# capsule_registry.py\n\nclass CapsuleRegistry:\n    \"\"\"\n    Registers and validates capsule types across sensory and cognitive modules.\n    \"\"\"\n\n    def __init__(self):\n        self.registry = {}\n\n    def register_capsule_type(self, name: str, required_fields: list[str], source: str = \"\", description:",
+    "mnemonic": "# capsule_registry.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\capsule_router.py": {
+    "lines": 20,
+    "preview": "# capsule_router.py\n\nfrom perception import process_capsule\nfrom perception_bridge import PerceptionBridge\nfrom capsule_factory import CapsuleFactory\n\nclass CapsuleRouter:\n    \"\"\"\n    Routes validated capsules to perception, memory, or behavior systems.\n    \"\"\"\n\n    def __init__(self):\n        self.",
+    "mnemonic": "# capsule_router.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\capsule_similarity.py": {
+    "lines": 24,
+    "preview": "# capsule_similarity.py\n\nimport numpy as np\n\nclass CapsuleSimilarity:\n    \"\"\"\n    Compares encoded capsules using cosine similarity or Euclidean distance.\n    \"\"\"\n\n    def cosine_similarity(self, vec1, vec2):\n        dot = np.dot(vec1, vec2)\n        norm1 = np.linalg.norm(vec1)\n        norm2 = np.li",
+    "mnemonic": "# capsule_similarity.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\capsule_terminal.py": {
+    "lines": 39,
+    "preview": "# capsule_terminal.py\n\nclass CapsuleTerminal:\n    \"\"\"\n    Acts as a command-line interface or internal dispatcher for math capsules.\n    Allows querying, routing, and previewing capsule content.\n    \"\"\"\n\n    def __init__(self, capsule_store: list):\n        self.capsules = capsule_store\n\n    def list",
+    "mnemonic": "# capsule_terminal.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\capsule_visualizer.py": {
+    "lines": 41,
+    "preview": "# capsule_visualizer.py\n\nimport matplotlib.pyplot as plt\nimport matplotlib.dates as mdates\nfrom datetime import datetime\nimport time\n\nclass CapsuleVisualizer:\n    \"\"\"\n    Visualizes short-term memory capsule significance and decay over time.\n    \"\"\"\n\n    def __init__(self, short_term_memory):\n      ",
+    "mnemonic": "# capsule_visualizer.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\catesian_grid_overlay.py": {
+    "lines": 2,
+    "preview": "# cartesian_grid_overlay.py\n# Lay a virtual mesh on image input for spatial reasoning\n",
+    "mnemonic": "# cartesian_grid_overlay.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\circle_detector.py": {
+    "lines": 2,
+    "preview": "# circle_detector.py\n# Finds circular patterns and returns radius, center, area\n",
+    "mnemonic": "# circle_detector.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\copilot_sync.py": {
+    "lines": 63,
+    "preview": "# === copilot_sync.py ===\n# Author: Dane & Copilot\n# Purpose: Extract code context and create a portable memory bundle for AI initialization.\n# Usage: Run this script from your project root to generate a structured `.zip` of relevant files,\n#         plus a contextual summary for easy reinjection in",
+    "mnemonic": "# === copilot_sync.py ==="
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\curve_classifier.py": {
+    "lines": 37,
+    "preview": "# curve_classifier.py\n\nimport numpy as np\n\ndef classify_curve(x: list[float], y: list[float]) -> str:\n    \"\"\"\n    Attempts to classify the shape of a curve based on y-values.\n\n    Returns:\n        str: One of [\"linear\", \"quadratic\", \"exponential\", \"logarithmic\", \"unknown\"]\n    \"\"\"\n    try:\n        x",
+    "mnemonic": "# curve_classifier.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\derivative_estimator.py": {
+    "lines": 31,
+    "preview": "# derivative_estimator.py\n\nfrom sympy import symbols, diff, sympify, lambdify\nimport numpy as np\n\nx = symbols('x')\n\ndef symbolic_derivative(expr_str: str) -> str | None:\n    \"\"\"\n    Returns the symbolic derivative of a function string.\n    Example: \"x**2 + 3*x\" \u2192 \"2*x + 3\"\n    \"\"\"\n    try:\n        e",
+    "mnemonic": "# derivative_estimator.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\distance_2d.py": {
+    "lines": 19,
+    "preview": "# distance_2d.py\n# Computes the straight-line distance between 2D points\n\nimport math\n\ndef distance_2d(p1: tuple, p2: tuple) -> float:\n    \"\"\"\n    Calculates the straight-line (Euclidean) distance between two 2D points.\n\n    Parameters:\n        p1 (tuple): (x1, y1) coordinates of the first point\n   ",
+    "mnemonic": "# distance_2d.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\distance_formula.py": {
+    "lines": 2,
+    "preview": "# distance_formula.py\n# Straight-line distance between 2D or 3D points\n",
+    "mnemonic": "# distance_formula.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\evaluate_expression.py": {
+    "lines": 17,
+    "preview": "# evaluate_expression.py\n\ndef evaluate_expression(expr: str, variables: dict = {}) -> float | None:\n    \"\"\"\n    Safely evaluates a math expression string with optional variable bindings.\n\n    Parameters:\n        expr (str): The expression to evaluate (e.g., \"2*x + 3\")\n        variables (dict): Dicti",
+    "mnemonic": "# evaluate_expression.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\evaluate_systems.py": {
+    "lines": 20,
+    "preview": "# evaluate_systems.py\n\ndef evaluate_system(conditions: list[str], variables: dict = {}) -> bool | None:\n    \"\"\"\n    Evaluates a list of inequality or logical expressions as a system.\n\n    Parameters:\n        conditions (list of str): Each condition is a string (e.g., \"x > 2\", \"y < 5\")\n        variab",
+    "mnemonic": "# evaluate_systems.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\exponential_modeler.py": {
+    "lines": 40,
+    "preview": "# exponential_modeler.py\n\nimport numpy as np\nfrom scipy.optimize import curve_fit\n\ndef exponential_func(x, a, b):\n    \"\"\"Model: y = a * exp(b * x)\"\"\"\n    return a * np.exp(b * x)\n\ndef fit_exponential(x_data: list[float], y_data: list[float]) -> dict | None:\n    \"\"\"\n    Fits an exponential model to t",
+    "mnemonic": "# exponential_modeler.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\field_analyzer.py": {
+    "lines": 49,
+    "preview": "# field_analyzer.py\n\nimport numpy as np\n\nclass FieldAnalyzer:\n    \"\"\"\n    Analyzes 2D scalar fields (e.g., temperature, light, pressure) to detect\n    gradients, hotspots, and directional flow.\n    \"\"\"\n\n    def __init__(self, field: np.ndarray, dx: float = 1.0, dy: float = 1.0):\n        \"\"\"\n        ",
+    "mnemonic": "# field_analyzer.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\find_roots.py": {
+    "lines": 16,
+    "preview": "# find_roots.py\n\nimport numpy as np\n\ndef find_roots(coeffs: list[float]) -> list[float]:\n    \"\"\"\n    Finds the real roots of a polynomial given its coefficients.\n\n    Parameters:\n        coeffs (list): Polynomial coefficients from highest to lowest degree\n\n    Returns:\n        list of floats: Real r",
+    "mnemonic": "# find_roots.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\find_roots_symbolic.py": {
+    "lines": 25,
+    "preview": "# find_roots_symbolic.py\n\nfrom sympy import symbols, solve, simplify\nfrom sympy.parsing.sympy_parser import parse_expr\n\nx = symbols('x')  # Default variable\n\ndef find_roots_symbolic(expr_str: str, var_str: str = \"x\") -> list:\n    \"\"\"\n    Finds symbolic roots of a univariate polynomial expression.\n\n ",
+    "mnemonic": "# find_roots_symbolic.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\function_transformer.py": {
+    "lines": 35,
+    "preview": "# function_transformer.py\n\nimport numpy as np\n\ndef shift(f, h=0, k=0):\n    \"\"\"\n    Returns a new function g(x) = f(x - h) + k\n    Horizontal shift by h, vertical shift by k\n    \"\"\"\n    return lambda x: f(x - h) + k\n\ndef stretch(f, a=1, b=1):\n    \"\"\"\n    Returns a new function g(x) = a * f(b * x)\n   ",
+    "mnemonic": "# function_transformer.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\graph_multiple.py": {
+    "lines": 28,
+    "preview": "# graph_multiple.py\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\ndef graph_multiple(polys: list[list[float]], x_range=(-10, 10), steps=400):\n    \"\"\"\n    Plots multiple polynomials on the same graph.\n\n    Parameters:\n        polys (list of lists): Each sublist is a polynomial's coefficients\n ",
+    "mnemonic": "# graph_multiple.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\graph_polynomial.py": {
+    "lines": 23,
+    "preview": "# graph_polynomial.py\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\ndef graph_polynomial(coeffs: list[float], x_range=(-10, 10), steps=400):\n    \"\"\"\n    Plots a polynomial given its coefficients.\n    coeffs: list of coefficients from highest to lowest degree.\n    Example: [1, -3, 2] \u2192 x\u00b2 - 3x",
+    "mnemonic": "# graph_polynomial.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\inequality_checker.py": {
+    "lines": 17,
+    "preview": "# inequality_checker.py\n\ndef check_inequality(expr: str, variables: dict = {}) -> bool | None:\n    \"\"\"\n    Evaluates an inequality expression with optional variable bindings.\n\n    Parameters:\n        expr (str): Inequality string (e.g., \"2*x + 1 > 5\")\n        variables (dict): Variable values (e.g.,",
+    "mnemonic": "# inequality_checker.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\integral_accumulator.py": {
+    "lines": 31,
+    "preview": "# integral_accumulator.py\n\nfrom sympy import symbols, integrate, sympify\nfrom scipy.integrate import quad\nimport numpy as np\n\nx = symbols('x')\n\ndef symbolic_integral(expr_str: str, lower: float = None, upper: float = None) -> str | float | None:\n    \"\"\"\n    Computes the symbolic integral of an expre",
+    "mnemonic": "# integral_accumulator.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\kinematic_analyzer.py": {
+    "lines": 55,
+    "preview": "# kinematic_analyzer.py\n\nfrom distance_2d import distance_2d\nfrom vector_ops import magnitude\n\nclass KinematicAnalyzer:\n    \"\"\"\n    Tracks position, velocity, and acceleration of keypoints over time.\n    Assumes 2D points and uniform time steps (dt).\n    \"\"\"\n\n    def __init__(self, dt: float = 1.0):",
+    "mnemonic": "# kinematic_analyzer.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\limit_estimator.py": {
+    "lines": 24,
+    "preview": "# limit_estimator.py\n\nfrom sympy import symbols, limit, sympify, oo\n\nx = symbols('x')\n\ndef estimate_limit(expr_str: str, approach: float | str, direction: str = \"\") -> float | str | None:\n    \"\"\"\n    Estimates the limit of a function as x approaches a value.\n\n    Parameters:\n        expr_str (str): ",
+    "mnemonic": "# limit_estimator.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\linear_organizer.py": {
+    "lines": 43,
+    "preview": "# linear_organizer.py\n\nimport numpy as np\n\nclass LinearOrganizer:\n    \"\"\"\n    A PID-inspired array organizer that learns to reshape and cluster\n    incoming 1D arrays into optimal 2D matrix forms over time.\n    \"\"\"\n\n    def __init__(self, target_cols=3):\n        self.target_cols = target_cols\n      ",
+    "mnemonic": "# linear_organizer.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\linear_solver.py": {
+    "lines": 17,
+    "preview": "# linear_solver.py\n\ndef solve_linear(a: float, b: float) -> float | None:\n    \"\"\"\n    Solves a basic linear equation of the form:\n        ax + b = 0\n\n    Parameters:\n        a (float): Coefficient of x\n        b (float): Constant term\n\n    Returns:\n        float | None: Solution for x if solvable, o",
+    "mnemonic": "# linear_solver.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\linear_system_solver.py": {
+    "lines": 22,
+    "preview": "# linear_system_solver.py\n\nimport numpy as np\n\ndef solve_linear_system(coeff_matrix: list[list[float]], constants: list[float]) -> list[float] | None:\n    \"\"\"\n    Solves a system of linear equations represented as Ax = b.\n\n    Parameters:\n        coeff_matrix (list of lists): Coefficient matrix A (n",
+    "mnemonic": "# linear_system_solver.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\logarithmic_ops.py": {
+    "lines": 22,
+    "preview": "# logarithmic_ops.py\n\nimport math\n\ndef log_base(x: float, base: float) -> float | None:\n    \"\"\"Computes log base `base` of `x`.\"\"\"\n    if x <= 0 or base <= 0 or base == 1:\n        return None\n    return math.log(x, base)\n\ndef natural_log(x: float) -> float | None:\n    \"\"\"Computes natural logarithm (",
+    "mnemonic": "# logarithmic_ops.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\math_abstraction.py": {
+    "lines": 37,
+    "preview": "# math_abstraction.py\n\nfrom collections import defaultdict\n\nclass MathAbstraction:\n    \"\"\"\n    Extracts abstract patterns from math capsules.\n    Groups similar structures and proposes general forms.\n    \"\"\"\n\n    def __init__(self):\n        self.patterns = defaultdict(list)\n\n    def abstract_capsule",
+    "mnemonic": "# math_abstraction.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\math_animator.py": {
+    "lines": 44,
+    "preview": "# math_animator.py\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport matplotlib.animation as animation\nfrom sympy import symbols, sympify, lambdify\n\nx = symbols('x')\n\nclass MathAnimator:\n    \"\"\"\n    Animates a function over time by plotting its evolution.\n    \"\"\"\n\n    def __init__(self, exp",
+    "mnemonic": "# math_animator.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\math_currier.py": {
+    "lines": 42,
+    "preview": "# math_currier.py\n\nclass MathCurrier:\n    \"\"\"\n    Collects math outputs from various modules and packages them into\n    standardized capsules for downstream perception or command use.\n    \"\"\"\n\n    def __init__(self):\n        self.capsules = []\n\n    def collect(self, source: str, data: dict):\n       ",
+    "mnemonic": "# math_currier.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\math_filter.py": {
+    "lines": 31,
+    "preview": "# math_filter.py\n\nclass MathFilter:\n    \"\"\"\n    Filters and categorizes math capsules based on tags or payload content.\n    \"\"\"\n\n    def __init__(self):\n        self.categories = {\n            \"motion\": [],\n            \"directional\": [],\n            \"angular\": [],\n            \"high_magnitude\": [],\n ",
+    "mnemonic": "# math_filter.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\math_interface.py": {
+    "lines": 55,
+    "preview": "# math_interface.py\n\nfrom sympy import sympify\nfrom math_visualizer import MathVisualizer\nfrom math_animator import MathAnimator\n\nclass MathInterface:\n    \"\"\"\n    Parses natural language math commands and routes to visualizer or animator.\n    \"\"\"\n\n    def __init__(self):\n        self.visualizer = Ma",
+    "mnemonic": "# math_interface.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\math_mapper.py": {
+    "lines": 51,
+    "preview": "# math_mapper.py\n\nclass MathMapper:\n    \"\"\"\n    Maps math memory capsules to contextual domains:\n    - Spatial (e.g., coordinates, terrain)\n    - Temporal (e.g., trends, rates)\n    - Perceptual (e.g., sensor fields, motion)\n    - Command (e.g., task relevance, decision triggers)\n    \"\"\"\n\n    def __i",
+    "mnemonic": "# math_mapper.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\math_memory.py": {
+    "lines": 49,
+    "preview": "# math_memory.py\n\nimport time\nfrom collections import defaultdict\n\nclass MathMemory:\n    \"\"\"\n    Stores and retrieves math capsules over time.\n    Supports tagging, time-based recall, and similarity search.\n    \"\"\"\n\n    def __init__(self):\n        self.memory = []  # List of capsules\n        self.in",
+    "mnemonic": "# math_memory.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\math_reasoner.py": {
+    "lines": 59,
+    "preview": "# math_reasoner.py\n\nclass MathReasoner:\n    \"\"\"\n    Draws conclusions from stored math capsules.\n    Supports rule-based inference, pattern chaining, and contradiction checks.\n    \"\"\"\n\n    def __init__(self, memory):\n        \"\"\"\n        Parameters:\n            memory: Instance of MathMemory\n        ",
+    "mnemonic": "# math_reasoner.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\math_tutor.py": {
+    "lines": 57,
+    "preview": "import time\nfrom speak import Speak\n\nclass MathTutor:\n    \"\"\"\n    Adaptive math tutor using PID-style feedback to adjust teaching strategy.\n    Logs sessions for short- and long-term learning.\n    \"\"\"\n\n    def __init__(self, target_clarity=0.9, kp=1.0, ki=0.1, kd=0.05):\n        self.target_clarity =",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\math_visualizer.py": {
+    "lines": 52,
+    "preview": "# math_visualizer.py\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom sympy import sympify, lambdify, symbols\n\nx = symbols('x')\n\nclass MathVisualizer:\n    \"\"\"\n    Visualizes mathematical functions, derivatives, and integrals.\n    \"\"\"\n\n    def __init__(self, x_range=(-10, 10), resolution=400)",
+    "mnemonic": "# math_visualizer.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\perception_bridge.py": {
+    "lines": 34,
+    "preview": "# perception_bridge.py\n\nfrom short_term import ShortTermMemory\nfrom long_term import LongTermMemory\n\nclass PerceptionBridge:\n    \"\"\"\n    Receives input capsules, routes them through short-term memory,\n    and optionally promotes to long-term memory.\n    \"\"\"\n\n    def __init__(self, st_slots=12):\n    ",
+    "mnemonic": "# perception_bridge.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\perimeter_area_estimator.py": {
+    "lines": 2,
+    "preview": "# perimeter_area_estimator.py\n# Approximates shape boundaries from pixel maps\n",
+    "mnemonic": "# perimeter_area_estimator.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\polar_filter.py": {
+    "lines": 2,
+    "preview": "# polar_filter.py\n# Filter or isolate motion in a given angular sector\n",
+    "mnemonic": "# polar_filter.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\quadratic_solver.py": {
+    "lines": 30,
+    "preview": "# quadratic_solver.py\n\nimport math\n\ndef solve_quadratic(a: float, b: float, c: float) -> tuple | None:\n    \"\"\"\n    Solves a quadratic equation of the form:\n        ax\u00b2 + bx + c = 0\n\n    Parameters:\n        a (float): Coefficient of x\u00b2\n        b (float): Coefficient of x\n        c (float): Constant t",
+    "mnemonic": "# quadratic_solver.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\rate_predictor.py": {
+    "lines": 32,
+    "preview": "# rate_predictor.py\n\nimport numpy as np\nfrom scipy.stats import linregress\n\ndef predict_rate(x_data: list[float], y_data: list[float], future_x: float) -> float | None:\n    \"\"\"\n    Predicts the future value of y at future_x using linear regression.\n\n    Parameters:\n        x_data (list): Time or inp",
+    "mnemonic": "# rate_predictor.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\scan_memory_mapper.py": {
+    "lines": 58,
+    "preview": "# scan_memory_mapper.py\n\nimport time\n\nclass ScanMemoryMapper:\n    \"\"\"\n    Stores and retrieves scan results, linking them to timestamps and scan types.\n    Enables comparison, recall, and temporal reasoning.\n    \"\"\"\n\n    def __init__(self):\n        self.memory = []  # List of dicts: {\"type\": str, \"t",
+    "mnemonic": "# scan_memory_mapper.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\scan_scheduler.py": {
+    "lines": 59,
+    "preview": "# scan_scheduler.py\n\nclass ScanScheduler:\n    \"\"\"\n    Chooses which scan modules to activate based on task context,\n    recent scan history, and adaptive scanner feedback.\n    \"\"\"\n\n    def __init__(self, analyzers: dict, adaptive_scanner):\n        \"\"\"\n        Parameters:\n            analyzers (dict)",
+    "mnemonic": "# scan_scheduler.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\sequences_series.py": {
+    "lines": 27,
+    "preview": "\n# sequences_series.py\n\ndef arithmetic_sequence(a1: float, d: float, n: int) -> list[float]:\n    \"\"\"Generates an arithmetic sequence of n terms.\"\"\"\n    return [a1 + i * d for i in range(n)]\n\ndef arithmetic_sum(a1: float, d: float, n: int) -> float:\n    \"\"\"Computes the sum of the first n terms of an ",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\session_reviewer.py": {
+    "lines": 25,
+    "preview": "# session_reviewer.py\n\nfrom whiteboard_session import WhiteboardSession\n\nclass SessionReviewer:\n    \"\"\"\n    Allows browsing and filtering of past whiteboard sessions.\n    \"\"\"\n\n    def __init__(self, session_tracker: WhiteboardSession):\n        self.session_tracker = session_tracker\n\n    def list_rec",
+    "mnemonic": "# session_reviewer.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\simplify_and_factor.py": {
+    "lines": 21,
+    "preview": "# simplify_and_factor.py\n\nfrom sympy import symbols, simplify, factor\n\nx = symbols('x')  # You can generalize this later\n\ndef simplify_expr(expr_str: str) -> str:\n    \"\"\"\n    Simplifies an algebraic expression string.\n    Example: \"x**2 + 2*x + 1\" \u2192 \"x**2 + 2*x + 1\"\n    \"\"\"\n    expr = simplify(expr_",
+    "mnemonic": "# simplify_and_factor.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\sketch_analyzer.py": {
+    "lines": 42,
+    "preview": "# sketch_analyzer.py\n\nimport cv2\nimport numpy as np\n\nclass SketchAnalyzer:\n    \"\"\"\n    Analyzes whiteboard sketches to detect basic geometric shapes and contours.\n    \"\"\"\n\n    def __init__(self, image_path: str):\n        self.image_path = image_path\n        self.image = cv2.imread(image_path)\n      ",
+    "mnemonic": "# sketch_analyzer.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\sketch_comparator.py": {
+    "lines": 29,
+    "preview": "# sketch_comparator.py\n\nimport cv2\nimport numpy as np\n\nclass SketchComparator:\n    \"\"\"\n    Compares two sketches using structural similarity and contour overlap.\n    \"\"\"\n\n    def __init__(self, path1: str, path2: str):\n        self.img1 = cv2.imread(path1, cv2.IMREAD_GRAYSCALE)\n        self.img2 = c",
+    "mnemonic": "# sketch_comparator.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\sketch_improver.py": {
+    "lines": 34,
+    "preview": "# sketch_improver.py\n\nimport cv2\nimport numpy as np\n\nclass SketchImprover:\n    \"\"\"\n    Enhances and cleans up whiteboard sketches.\n    Supports denoising, contrast adjustment, and edge sharpening.\n    \"\"\"\n\n    def __init__(self, image_path: str):\n        self.image_path = image_path\n        self.ori",
+    "mnemonic": "# sketch_improver.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\sketch_memory.py": {
+    "lines": 35,
+    "preview": "# sketch_memory.py\n\nimport time\nfrom collections import defaultdict\n\nclass SketchMemory:\n    \"\"\"\n    Stores comparisons between sketches with similarity scores and notes.\n    \"\"\"\n\n    def __init__(self):\n        self.comparisons = []\n        self.index_by_topic = defaultdict(list)\n\n    def log_compa",
+    "mnemonic": "# sketch_memory.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\spatial_analyzer.py": {
+    "lines": 46,
+    "preview": "# spatial_analyzer.py\n\nfrom distance_2d import distance_2d\nfrom angle_between_points import angle_between_points\nfrom to_polar import to_polar\nfrom linear_organizer import LinearOrganizer\n\nclass SpatialAnalyzer:\n    \"\"\"\n    Uses math tools to interpret spatial relationships from visual input.\n    Mo",
+    "mnemonic": "# spatial_analyzer.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\topographic_analyzer.py": {
+    "lines": 37,
+    "preview": "# topographic_analyzer.py\n\nimport numpy as np\nfrom topocalc.gradient import gradient_d8\n\nclass TopographicAnalyzer:\n    \"\"\"\n    Analyzes digital elevation models (DEMs) to extract slope and aspect.\n    Uses finite difference methods to estimate terrain shape.\n    \"\"\"\n\n    def __init__(self, dem_arra",
+    "mnemonic": "# topographic_analyzer.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\to_cartesian.py": {
+    "lines": 16,
+    "preview": "# to_cartesian.py\n# Convert (r, theta) back to (x, y)\n\nimport math\n\ndef to_cartesian(r: float, theta: float) -> tuple:\n    \"\"\"\n    Converts polar coordinates (r, theta in degrees) to Cartesian (x, y).\n\n    Returns:\n        tuple: (x, y)\n    \"\"\"\n    theta_rad = math.radians(theta)\n    x = r * math.co",
+    "mnemonic": "# to_cartesian.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\to_polar.py": {
+    "lines": 15,
+    "preview": "# to_polar.py\n# Convert (x,y) to (r,theta)\n\nimport math\n\ndef to_polar(x: float, y: float) -> tuple:\n    \"\"\"\n    Converts Cartesian coordinates (x, y) to polar form (r, theta).\n\n    Returns:\n        tuple: (r, theta) where r is the radius and theta is in degrees\n    \"\"\"\n    r = math.hypot(x, y)\n    t",
+    "mnemonic": "# to_polar.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\triangle_solver.py": {
+    "lines": 45,
+    "preview": "# triangle_solver.py\n# Given side/angle combos, fills in the missing pieces\n\nimport math\n\ndef solve_triangle(a=None, b=None, c=None, A=None, B=None, C=None):\n    \"\"\"\n    Solves a triangle given any 3 known values (sides or angles),\n    using standard trigonometric rules (Law of Sines, Cosines).\n\n   ",
+    "mnemonic": "# triangle_solver.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\tutor_interface.py": {
+    "lines": 72,
+    "preview": "from math_visualizer import MathVisualizer\nfrom math_animator import MathAnimator\nfrom math_tutor import MathTutor\nfrom tutor_memory import TutorMemory\nfrom whiteboard_interface import WhiteboardInterface\nfrom whiteboard_memory import WhiteboardMemory\nfrom speak import Speak\n\nclass TutorInterface:\n ",
+    "mnemonic": ""
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\tutor_memory.py": {
+    "lines": 58,
+    "preview": "# tutor_memory.py\n\nimport time\nfrom collections import defaultdict\n\nclass TutorMemory:\n    \"\"\"\n    Stores logs of tutoring sessions, including strategy, topic, feedback, and clarity.\n    Enables reflection, pattern recognition, and long-term adaptation.\n    \"\"\"\n\n    def __init__(self):\n        self.",
+    "mnemonic": "# tutor_memory.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\vector_ops.py": {
+    "lines": 38,
+    "preview": "# vector_ops.py\n\nimport math\n\ndef magnitude(v: tuple) -> float:\n    \"\"\"Returns the length of vector v = (x, y).\"\"\"\n    return math.hypot(v[0], v[1])\n\ndef dot_product(v1: tuple, v2: tuple) -> float:\n    \"\"\"Computes the dot product of two vectors.\"\"\"\n    return v1[0]*v2[0] + v1[1]*v2[1]\n\ndef angle_bet",
+    "mnemonic": "# vector_ops.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\visual_geometry_probe.py": {
+    "lines": 20,
+    "preview": "# visual_geometry_probe.py\n# This gives her a math eye\n\n\nfrom angle_between_points import find_angle\nfrom distance_formula import dist_2d\nfrom to_polar import cart_to_polar\n\ndef analyze_frame(frame):\n    points = detect_keypoints(frame)  # via OpenCV or custom logic\n    if len(points) >= 3:\n        ",
+    "mnemonic": "# visual_geometry_probe.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\voice_logger.py": {
+    "lines": 26,
+    "preview": "# voice_logger.py\n\nimport time\n\nclass VoiceLogger:\n    \"\"\"\n    Logs all spoken output with timestamps and optional tags.\n    \"\"\"\n\n    def __init__(self):\n        self.log = []\n\n    def record(self, text: str, context: str = \"\"):\n        entry = {\n            \"timestamp\": time.strftime(\"%Y%m%d-%H%M%S",
+    "mnemonic": "# voice_logger.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\voice_profile.py": {
+    "lines": 30,
+    "preview": "# voice_profile.py\n\nfrom speak import Speak\n\nclass VoiceProfile:\n    \"\"\"\n    Manages different voice styles by adjusting rate, pitch, and voice ID.\n    \"\"\"\n\n    def __init__(self):\n        self.profiles = {\n            \"default\": {\"rate\": 180, \"voice_id\": 0},\n            \"teacher\": {\"rate\": 170, \"vo",
+    "mnemonic": "# voice_profile.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\whiteboard_cleaner.py": {
+    "lines": 44,
+    "preview": "# whiteboard_cleaner.py\n\nimport os\nfrom whiteboard_memory import WhiteboardMemory\n\nclass WhiteboardCleaner:\n    \"\"\"\n    Deletes whiteboard sketches or clears memory selectively.\n    \"\"\"\n\n    def __init__(self):\n        self.memory = WhiteboardMemory()\n\n    def delete_sketch(self, path: str) -> bool:",
+    "mnemonic": "# whiteboard_cleaner.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\whiteboard_commands.py": {
+    "lines": 26,
+    "preview": "# whiteboard_commands.py\n\nfrom whiteboard_memory import WhiteboardMemory\n\nclass WhiteboardCommands:\n    \"\"\"\n    Exposes whiteboard memory for search, review, and topic-based recall.\n    \"\"\"\n\n    def __init__(self):\n        self.memory = WhiteboardMemory()\n\n    def list_topics(self) -> list:\n        ",
+    "mnemonic": "# whiteboard_commands.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\whiteboard_dashboard.py": {
+    "lines": 46,
+    "preview": "# whiteboard_dashboard.py\n\nfrom whiteboard_commands import WhiteboardCommands\nfrom whiteboard_cleaner import WhiteboardCleaner\nfrom whiteboard_session import WhiteboardSession\nfrom session_reviewer import SessionReviewer\nfrom whiteboard_feedback import WhiteboardFeedback\n\nclass WhiteboardDashboard:\n",
+    "mnemonic": "# whiteboard_dashboard.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\whiteboard_feedback.py": {
+    "lines": 26,
+    "preview": "# whiteboard_feedback.py\n\nimport time\n\nclass WhiteboardFeedback:\n    \"\"\"\n    Collects learner feedback on whiteboard sketches.\n    \"\"\"\n\n    def __init__(self):\n        self.feedback_log = []\n\n    def submit_feedback(self, sketch_path: str, clarity: float, comment: str = \"\"):\n        entry = {\n      ",
+    "mnemonic": "# whiteboard_feedback.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\whiteboard_gui.py": {
+    "lines": 48,
+    "preview": "# whiteboard_gui.py\n\nimport tkinter as tk\nfrom tkinter import filedialog, messagebox\nfrom whiteboard_interface import WhiteboardInterface\nfrom whiteboard_dashboard import WhiteboardDashboard\n\nclass WhiteboardGUI:\n    \"\"\"\n    GUI wrapper for launching and managing whiteboard sessions.\n    \"\"\"\n\n    de",
+    "mnemonic": "# whiteboard_gui.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\whiteboard_interface.py": {
+    "lines": 59,
+    "preview": "# whiteboard_interface.py\n\nimport tkinter as tk\nfrom tkinter.colorchooser import askcolor\nfrom PIL import ImageGrab\n\nclass WhiteboardInterface:\n    def __init__(self):\n        self.root = tk.Tk()\n        self.root.title(\"AI Whiteboard\")\n        self.color = \"black\"\n        self.brush_size = 3\n      ",
+    "mnemonic": "# whiteboard_interface.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\whiteboard_memory.py": {
+    "lines": 44,
+    "preview": "# whiteboard_memory.py\n\nimport os\nimport time\nfrom collections import defaultdict\nfrom PIL import Image\n\nclass WhiteboardMemory:\n    \"\"\"\n    Stores and retrieves whiteboard captures with metadata.\n    Supports tagging, topic indexing, and timestamped recall.\n    \"\"\"\n\n    def __init__(self, save_dir=",
+    "mnemonic": "# whiteboard_memory.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\whiteboard_session.py": {
+    "lines": 54,
+    "preview": "# whiteboard_session.py\n\nimport time\nfrom whiteboard_memory import WhiteboardMemory\nfrom sketch_analyzer import SketchAnalyzer\n\nclass WhiteboardSession:\n    \"\"\"\n    Tracks whiteboard usage sessions.\n    Links sketches to topics, timestamps, and detected shapes.\n    \"\"\"\n\n    def __init__(self):\n     ",
+    "mnemonic": "# whiteboard_session.py"
+  },
+  "C:\\Users\\dewnt/Documents/GitHub/Cupramora\\Toolbox\\whiteboard_voice.py": {
+    "lines": 20,
+    "preview": "# whiteboard_voice.py\n\nfrom speak import Speak\n\nclass WhiteboardVoice:\n    \"\"\"\n    Narrates sketches using the shared voice engine.\n    \"\"\"\n\n    def __init__(self):\n        self.speaker = Speak()\n\n    def narrate_sketch(self, topic: str, shapes: list[str]):\n        intro = f\"This sketch is about {to",
+    "mnemonic": "# whiteboard_voice.py"
+  }
+}
