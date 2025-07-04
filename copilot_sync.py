@@ -54,12 +54,12 @@ if __name__ == "__main__":
     print("📡 Scanning all repositories for Copilot sync...\n")
     for repo in REPOS:
         if os.path.exists(repo):
-            print(f"🧭 Indexing: {repo}")
+            print(f" Indexing: {repo}")
             summary = scan_repo(repo)
             full_summary.update(summary)
             all_files.extend(summary.keys())
         else:
-            print(f"⚠️ Repo not found: {repo}")
+            print(f"⚠ Repo not found: {repo}")
 
     with open(SUMMARY_FILE, "w", encoding="utf-8") as f:
         json.dump(full_summary, f, indent=2)
@@ -67,5 +67,5 @@ if __name__ == "__main__":
     all_files.append(SUMMARY_FILE)
     zip_all(all_files, BUNDLE_FILE)
 
-    print(f"\n✅ Context bundle created: {BUNDLE_FILE}")
-    print(f"📄 Summary file: {SUMMARY_FILE}")
+    print(f"\n Context bundle created: {BUNDLE_FILE}")
+    print(f" Summary file: {SUMMARY_FILE}")
