@@ -76,27 +76,27 @@ class DreamReflections:
 
         return summary
 
- def reflect_on_recent(self):
-    from perception import process_capsule, PerceptionCapsule  # lazy import here
+    def reflect_on_recent(self):
+        from perception import process_capsule, PerceptionCapsule  # lazy import here
 
-    recent = self.get_recent_reflection()
-    if not recent:
-        return None
+        recent = self.get_recent_reflection()
+        if not recent:
+            return None
+    
+        # log low-confidence decisions to self_model
+        if recent.get("strategy"):
+            conf = recent["strategy"].get("confidence", 0.5)
+            if conf < 0.3:
+                self_model.record_failure("low_confidence_" + recent["summary"])
 
-    # log low-confidence decisions to self_model
-    if recent.get("strategy"):
-        conf = recent["strategy"].get("confidence", 0.5)
-        if conf < 0.3:
-            self_model.record_failure("low_confidence_" + recent["summary"])
-
-    capsule = PerceptionCapsule(
-        stimulus={"source": "internal", "memory_reference": recent["summary"]},
-        emotion_vector={recent["emotion"]: recent["amplified"] * 0.5},
-        behavior="reflect",
-        context=recent["summary"],
-        feedback="internal",
-        reinforcement=0.05
-    )
-    result = process_capsule(capsule)
-    print(" Dream Reflection Injected:", result["capsule"]["context"])
-    return result
+        capsule = PerceptionCapsule(
+            stimulus={"source": "internal", "memory_reference": recent["summary"]},
+            emotion_vector={recent["emotion"]: recent["amplified"] * 0.5},
+            behavior="reflect",
+            context=recent["summary"],
+            feedback="internal",
+            reinforcement=0.05
+        )
+        result = process_capsule(capsule)
+        print(" Dream Reflection Injected:", result["capsule"]["context"])
+        return result
