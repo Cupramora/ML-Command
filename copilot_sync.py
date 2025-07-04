@@ -51,7 +51,7 @@ if __name__ == "__main__":
     full_summary = {}
     all_files = []
 
-    print("📡 Scanning all repositories for Copilot sync...\n")
+    print(" Scanning all repositories for Copilot sync...\n")
     for repo in REPOS:
         if os.path.exists(repo):
             print(f" Indexing: {repo}")
